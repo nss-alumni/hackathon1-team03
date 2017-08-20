@@ -121,6 +121,8 @@ $('.optionCard').click(function(event) {
 function DisplayAnswer(event){
     var toCurrent = $("p", event.target)[0];
 
+    console.log("ToCurrent:", toCurrent);
+
     var current_level = $("#hidden_current_level").html();
 
 
@@ -132,7 +134,10 @@ function DisplayAnswer(event){
       switch(level_questions[current_level].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
-        case 2 : $('#current').append(toCurrent.innerHTML);
+        case 2 : 
+          $("#content").html("");
+          $('#content').html(toCurrent.innerHTML);
+
             break;
         default:
             alert('ERROR');
@@ -165,6 +170,7 @@ function CheckAnswer(is_correct){
 
 $("#level-up").on('click', function(res){
   $('#levelUpModal').modal('hide');
+  // $('#content').html("");
   var current_level = $("#hidden_current_level").html();
   $(".card").removeClass('wronganswer');
   $(".card").addClass('optionCard');
