@@ -1,6 +1,7 @@
 'use strict';
 // console.log("writing to screen");
 
+var level = 'one';
 
 // var config = {
 //     apiKey: FbCreds.apiKey,
@@ -60,7 +61,8 @@ function GetQuestions(level){
 	    });
 	})
 }
-ShowQuestion('one');
+// ShowQuestion(level);
+ShowQuestion(level);
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
@@ -94,24 +96,35 @@ function ProgressBar() {
 //load and render the level that is clicked
 $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
-	GetQuestions('one');
+	level = 'one';
+	GetQuestions('one').then(function (level_questions) {
+		ShowQuestion(level);
+	})
+});
 
-});$("#level2Btn").on('click', () => {
+$("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
-	GetQuestions('two');
+	level = 'two';
+	GetQuestions('two').then(function (level_questions) {
+		ShowQuestion(level);
+	})
+});
 
-});$("#level3Btn").on('click', () => {
+$("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
+	level = 'three';
 	GetQuestions('three');
+});
 
-});$("#level4Btn").on('click', () => {
+$("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
+	level = 'four';
 	GetQuestions('four');
 });
 
 
-function ShowQuestion(){
-	GetQuestions('one').then(function (level_questions) {
+function ShowQuestion(level){
+	GetQuestions(level).then(function (level_questions) {
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
