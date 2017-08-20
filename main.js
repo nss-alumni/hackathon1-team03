@@ -69,9 +69,12 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
-$('.optionCard').click(function(event) {
+$('.optionCards').on("click", ".optionCard", function() {
+	console.log('this', this)
 	DisplayAnswer(event);
 	CheckAnswer();
+	$(this).removeClass('optionCard');
+	$(this).addClass('wronganswer')
 });
 
 function DisplayAnswer(event){
@@ -88,19 +91,21 @@ function DisplayAnswer(event){
     }
 	})
 }
-var wrong = 5;
-var totalPoint = 25;
 function CheckAnswer(){
+var totalPoint = $('#qPoints').html();
+totalPoint = parseInt(totalPoint);
 	var CheckAnswer = 1;
 	if (CheckAnswer == 0){
 		ProgressBar += totalPoint;
 		ProgressBar();
+		$('#qPoints').html('<p>25</p>');
 	}else{
-		totalPoint - 5;
-		console.log("totalPoints", totalPoint)
-		
-		//Calling progress bar to update amount
+		totalPoint = totalPoint - 5;
+		$('#qPoints').html(totalPoint);
+		console.log('totalPoint', totalPoint)
+		console.log("event.target", $("p", event.target))
 	}
+		return totalPoint;
 	//onclick of a card this function checks if the answer is correct
 	//totalPoint starts at 25
 	//if correct - then add  points to total and move to next question

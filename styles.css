@@ -130,7 +130,9 @@ input {
 	margin-top: 0 !important;
 }
 
-
+.wronganswer{
+	opacity: .1;
+}
 
 /******************************************/
 /* styles for End Page
