@@ -19,9 +19,9 @@ function Authenticate(){
       let FBKey = Object.keys(userData)[0];
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
+        //userData should be all relevant info, where are we storing it?
         console.log('we have a user', userData);
         showMainPage();
-        //userData should be all relevant info, where are we storing it?
       } else { //if not user - create new user
         $("#usernameEntry").show();
         $('#signInButton').off('click');
