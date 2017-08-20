@@ -8,7 +8,7 @@ let userInfo = null;
 //   username: userentry
 //   points: [125, 100, 15, etc...]
 //   }
-// var line = new ProgressBar.Line('#levelStatusBar');
+// var line = new ProgressBar.Line('#levelStat');
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -146,6 +146,7 @@ function ProgressBar(level) {
 	if (ProgressBar > 99){
 		LevelUp();
     //send to firebase
+		$('#levelUpModal').modal('show');
 	}else{
 		GetQuestions(level);
 	}
@@ -237,8 +238,10 @@ function getGoal(){
 getGoal();
 
 
-function LevelUp() {
-	//opens model with badge and congrats
+
+//opens model with badge and congrats
+function LevelUp(level) {
+	level++;
 	SaveProgress();
 }
 
