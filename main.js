@@ -2,6 +2,8 @@
 // console.log("writing to screen");
 
 var level = 'one';
+var selectSound = new Audio('audio/select.wav');
+var back = new Audio('audio/back.wav');
 
 // var config = {
 //     apiKey: FbCreds.apiKey,
@@ -100,6 +102,7 @@ $('.optionCards').on("click", ".optionCard", function() {
 	CheckAnswer();
 	$(this).removeClass('optionCard');
 	$(this).addClass('wronganswer')
+	selectSound.play();
 });
 
 function DisplayAnswer(event){
@@ -234,6 +237,7 @@ function logout(){
 	//log user out and show credits page
 	$("#mainScreen").hide();
 	$("#endScreen").show();
+	back.play();
 }
 
 // Click event listener for 'DONE' button at bottom of page
