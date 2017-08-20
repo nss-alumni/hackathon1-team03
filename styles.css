@@ -8,7 +8,6 @@ body {
 }
 
 .coolKidsHeaderCentered {
-	margin-top: 50px;
 	text-align: center;
 }
 
@@ -31,11 +30,16 @@ input {
 /******************************************/
 /* styles for Main Page
 /******************************************/
-
+/*Level Button*/
 .levelButton {
 	margin: 10px 5px 10px 125px;
+    background-image: url('images/pokeball-icon.jpg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
+/*Point Tracket*/
 .overallPoints {
 	text-align: center;
 }
@@ -44,6 +48,7 @@ input {
 	margin-bottom: 0;
 }
 
+/*Progress Bar*/
 .progressBar {
 	margin: 10px;
 }
@@ -52,6 +57,7 @@ input {
 	margin: 10px 10px;
 }
 
+/*Display Cards*/
 .workSpaceCard {
     min-height: 200px;
 }
@@ -61,6 +67,8 @@ input {
 	margin-left: 10px;
 }
 
+
+/*Level Bar*/
 .levelStatusBar {
 	max-width: 75px;
 	margin-left: 50px;
@@ -70,6 +78,8 @@ input {
 	text-align: center;
 }
 
+
+/*Instructions*/
 .instructions {
 	margin: 10px;
 }
@@ -83,6 +93,8 @@ input {
 	margin-left: 10px;
 }
 
+
+/*Questions*/
 .optionCards .card {
 	margin-top: 30px;
     min-height: 200px;
@@ -94,8 +106,28 @@ input {
 	border-top-right-radius: 15px;
 }
 
+/*End Button*/
 .doneButton {
 	margin-top: 40px;
+}
+
+
+/*Pikachu Set-up*/
+.pikachuHeader {
+	width: 10%;
+	height: 10%;
+	margin: 0;
+	padding: 0;
+}
+
+.col-sm-10{
+	padding-top: 0 !important;
+	margin-top: 0 !important;
+}
+
+.coolKidsHeaderCentered {
+	padding-top: 0 !important;
+	margin-top: 0 !important;
 }
 
 
