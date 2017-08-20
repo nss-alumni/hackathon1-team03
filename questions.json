@@ -3,7 +3,7 @@
         {
             "points": 25,
             "instruction": "Do something else 1",
-            "options": ["(1) Option 1", "Option 2", "option 3", "Option 4"]
+            "options": ["(1)Option 1", "Option 2", "option 3", "Option 4"]
         },
         {
             "points": 25,

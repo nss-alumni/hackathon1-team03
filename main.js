@@ -37,7 +37,7 @@ function GetQuestions(level){
 	    });
 	})
 }
-NextQuestion();
+NextQuestion('one');
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
@@ -66,15 +66,20 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
-function LevelTabs(leve){
+function LevelTabs(level){
 	//load and render the level that was clicked
 }
 
-function NextQuestion(){
+function NextQuestion(level){
 	// Get the questions from JSON
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions(level).then(function (level_questions) {
+
+		// Get amount of questions to generate a random number
+		var num_questions = level_questions.length;
+
 		// Random number (1-4) used to randomly choose a question
-		var rand_question_index = Math.floor((Math.random() * 4) + 1);
+		var rand_question_index = Math.floor((Math.random() * num_questions) + 1);
+
 		// Array of numbers to randomly sort the options for the randomly selected question
 		var random_options = [0, 1, 2, 3]
 		// Randomize the order of the array created above
