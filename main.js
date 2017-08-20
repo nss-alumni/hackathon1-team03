@@ -95,17 +95,16 @@ function LevelTabs(level){
 
 
 function NextQuestion(){
-	GetQuestions('one').then(function (levevl_questions) {
+	GetQuestions('one').then(function (level_questions) {
 		// console.log("JSON2: ", level_questions);
 		// Set new instructions
-		$("#instructions").html(levevl_questions.instruction);
+		$("#instructions").html(level_questions.instruction);
 		// Set the 4 options
 		// Need to randomize the 0 index so we are randomizing questions
-	    $("#option1").html(levevl_questions[0].options[0]);
-	    $("#option2").html(levevl_questions[0].options[1]);
-	    $("#option3").html(levevl_questions[0].options[2]);
-	    $("#option4").html(levevl_questions[0].options[3]);
->>>>>>> master
+	    $("#option1").html(level_questions[0].options[0]);
+	    $("#option2").html(level_questions[0].options[1]);
+	    $("#option3").html(level_questions[0].options[2]);
+	    $("#option4").html(level_questions[0].options[3]);
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -135,9 +134,9 @@ function randOrd(){
 
 //GET GOAL BOX VALUE
 function getGoal(){
-	GetQuestions('one').then(function (levevl_questions) {
-		console.log("JSON2: ", levevl_questions);
-		$('#goal').css("background-color", levevl_questions[0].goal);
+	GetQuestions('one').then(function (level_questions) {
+		console.log("JSON2: ", level_questions);
+		$('#goal').css("background-color", level_questions[0].goal);
 	})
 }
 getGoal();
