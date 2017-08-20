@@ -2,16 +2,12 @@
 // console.log("writing to screen");
 
 var level = 'one';
-
-// var config = {
-//     apiKey: FbCreds.apiKey,
-//     authDomain: FbCreds.authDomain
-//   };
-
-// firebase.initializeApp(config);
-// var provider = new firebase.auth.GoogleAuthProvider();
-
-
+let userInfo = null;
+// example of userInfo:
+// { uid: 98q3uptoiahsdg
+//   username: userentry
+//   points: [125, 100, 15, etc...]
+//   }
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -20,13 +16,12 @@ function Authenticate(){
   	//check firebase for credentials
     getUserInfo(data.user.uid)
     .then( (userData) => {
-      console.log('userData', userData);
       let FBKey = Object.keys(userData)[0];
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
+        //userData should be all relevant info, where are we storing it?
         console.log('we have a user', userData);
         showMainPage();
-        //userData should be all relevant info, where are we storing it?
       } else { //if not user - create new user
         $("#usernameEntry").show();
         $('#signInButton').off('click');
@@ -55,6 +50,7 @@ $("#signInButton").on('click', function() {
 function showMainPage() {
   $('#welcomeScreen').hide();
   $('#mainScreen').show();
+  updateTotalPoints();
 }
 
 function registerNewUser(username) {
@@ -146,6 +142,13 @@ function ProgressBar() {
 	}
 
 	//render the correct progress on the progress bar
+}
+
+function updateTotalPoints() {
+  let pointTotal = userInfo.points.reduce(function(a,b) {
+    return a + b;
+  });
+  $('#totalPoints').text(pointTotal);
 }
 
 
