@@ -2,7 +2,6 @@
 console.log("writing to screen");
 
 
-
 // var config = {
 //     apiKey: FbCreds.apiKey,
 //     authDomain: FbCreds.authDomain
@@ -27,12 +26,11 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
-
-
 	return new Promise ( (resolve, reject) => {
         $.getJSON("questions.json", function(json) {
             if (json){
-                resolve(json)
+            	console.log("JSON: ", json);
+                resolve(json[level])
             }else{
                 reject(false)
             }
@@ -45,6 +43,8 @@ function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
 	//choose an option to use for the goal display
 	//render the options on the cards
+
+
 }
 
 
@@ -74,13 +74,20 @@ function LevelTabs(leve){
 }
 
 function NextQuestion(){
-	GetQuestions(1).then(function (json) {
-		$("#instructions").html(json.one[0].instruction);
+	GetQuestions('one').then(function (levevl_questions) {
+		console.log("JSON2: ", levevl_questions);
+		// Set new instructions
+		$("#instructions").html(levevl_questions.instruction);
+		// Set the 4 options
+		// Need to randomize the 0 index so we are randomizing questions
+	    $("#option1").html(levevl_questions[0].options[0]);
+	    $("#option2").html(levevl_questions[0].options[1]);
+	    $("#option3").html(levevl_questions[0].options[2]);
+	    $("#option4").html(levevl_questions[0].options[3]);
 
-	    $("#option1").html(json.one[0].options[0]);
-	    $("#option2").html(json.one[0].options[1]);
-	    $("#option3").html(json.one[0].options[2]);
-	    $("#option4").html(json.one[0].options[3]);
+
+
+
 	})
 }
 
@@ -94,13 +101,8 @@ function SaveProgress(){
 
 function logout(){
 	//log user out and show credits page
+	$("#mainScreen").hide();
+	$("#endScreen").show();
 }
 
-// event handler for <Done For Now> button
-// $("#doneBtn").click(() => {
-// 	console.log("in click");
-// 	$("#mainScreen").hide();
-// 	$("#endScreen").removeAttr("hidden");
-// });
-
-
+$("#doneBtn").on('click',logout);
