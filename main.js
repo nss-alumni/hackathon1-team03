@@ -225,11 +225,13 @@ $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
 	level = '3';
 	GetQuestions(level);
+
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
 	level = '4';
+
 	GetQuestions(level);
 });
 
