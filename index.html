@@ -20,7 +20,7 @@
 
 
   <!-- WELCOME SCREEN -->
-  <div id="welcomeScreen" container="container welcomePage" style="display: none">
+  <div id="welcomeScreen" container="container welcomePage">
 
     <div class="row">
       <div class="col-sm-4"></div>
@@ -32,17 +32,20 @@
           <h2 class="form-signin-heading">please sign in</h2>
           <!-- <label for="input Email" class="sr-only">Email address</label> -->
           <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-
-          <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
-          <label for="password" class="sr-only" placeholder="Password"></label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="password" required>
-          <div class="checkbox">
-            <label>
+          <div id="usernameEntry" style="display: none">
+            <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
+            <p>please enter username</p>
+          </div>
+          <!-- <label for="password" class="sr-only" placeholder="Password"></label> -->
+<!--           <input type="password" id="inputPassword" class="form-control" placeholder="password" required -->
+      <!-- <div class="checkbox"> -->
+            <!-- <label>
               <input type="checkbox" value="remember-me">
                 remember me
-            </label>
-          </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" type="submit">login</button>
+            </label> -->
+            <div id="signInButton" class="btn btn-primary">
+              <img src="./images/googleButton.png">
+            </div>
 
         </form>
 
@@ -51,14 +54,14 @@
   </div> <!-- .container -->
 
     <!-- END SCREEN -->
-    
+
   <div id="endScreen" class="container endPage" style="display: none">
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
 
           <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
-          
+
           <div class="card badge">
             <div class="card-header">
               <h3 class="card-title">some kind of badge image here</h3>
@@ -82,7 +85,7 @@
 
 
   <!-- MAIN SCREEN -->
-  <div id="mainScreen" class="container">
+  <div id="mainScreen" class="container" style="display: none">
     <!-- <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1> -->
 
     <!-- Level Buttons across top + Total Points -->
@@ -222,7 +225,8 @@
       <div class="col-sm-4">
         <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
-    <div> <!-- .row -->
+    </div> <!-- .row -->
+  </div>
 
     <!-- END SCREEN -->
     <div id="endScreen" class="container endPage" hidden>
@@ -232,7 +236,7 @@
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
-        
+
         <div class="card badge">
           <div class="card-header">
             <h3 class="card-title">some kind of badge image here</h3>
@@ -252,7 +256,8 @@
 
       </div>
     </div> <!-- .row -->
-  
+  </div>
+
 
 
 
