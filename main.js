@@ -43,10 +43,7 @@ function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
 	//choose an option to use for the goal display
 	//render the options on the cards
-
-
 }
-
 
 //Add event listener to card
 $('.optionCard').click(function(event) {
@@ -74,10 +71,8 @@ function LevelTabs(leve){
 }
 
 function NextQuestion(){
+	// Get the questions from JSON
 	GetQuestions('one').then(function (level_questions) {
-		console.log("JSON23: ", level_questions);
-
-
 		// Random number (1-4) used to randomly choose a question
 		var rand_question_index = Math.floor((Math.random() * 4) + 1);
 		// Array of numbers to randomly sort the options for the randomly selected question
@@ -88,7 +83,6 @@ function NextQuestion(){
 		// Set new instructions
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
 		// Set the 4 options
-		// Need to randomize the 0 index so we are randomizing questions
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
 	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
 	    $("#option3").html(level_questions[rand_question_index-1].options[random_options[2]]);
@@ -115,4 +109,5 @@ function logout(){
 	$("#endScreen").show();
 }
 
+// Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
