@@ -2,6 +2,7 @@
 console.log("writing to screen");
 
 
+
 // var config = {
 //     apiKey: FbCreds.apiKey,
 //     authDomain: FbCreds.authDomain
@@ -11,7 +12,6 @@ console.log("writing to screen");
 // var provider = new firebase.auth.GoogleAuthProvider();
 
 
-// console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -37,16 +37,6 @@ function GetQuestions(level){
                 reject(false)
             }
 	    });
-
-		$.getJSON("questions.json", function(json) {
-		    console.log(json); 
-		    $("#instructions").html(json.one[0].instruction);
-
-		    $("#option1").html(json.one[0].options[0]);
-		    $("#option2").html(json.one[0].options[1]);
-		    $("#option3").html(json.one[0].options[2]);
-		    $("#option4").html(json.one[0].options[3]);
-		});
 	})
 }
 NextQuestion();
@@ -57,8 +47,15 @@ function RandomizeQuestionOrder(){
 	//render the options on the cards
 }
 
-function DisplayAnswer(){
-	//take the option that was clicked on display it on the current box
+
+//Add event listener to card
+$('.optionCard').click(function(event) {
+	DisplayAnswer(event);
+});
+function DisplayAnswer(event){
+	var toCurrent = $("p", event.target)[0];
+	console.log("toCurrent", toCurrent.innerHTML);
+	$('#current').html(toCurrent.innerHTML)
 }
 
 function CheckAnswer(){
