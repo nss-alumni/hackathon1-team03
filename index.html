@@ -29,7 +29,7 @@
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
 
         <form class="form-signin">
-          <h2 class="form-signin-heading">please sign in</h2>
+          <h2 class="form-signin-heading plsSignIn">please sign in</h2>
           <div id="usernameEntry" style="display: none">
             <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
             <p>please enter username</p>
@@ -202,12 +202,12 @@
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
-
-        <div class="card badge">
+        <image src="images/pikachu.jpg" class="pikachuHeader"></image>
+        <!-- <div class="card badge">
           <div class="card-header">
             <h3 class="card-title"><image src="images/pikachu.jpg" class="pikachuHeader"></image></h3>
           </div>
-        </div>
+        </div> -->
 
         <div class="card endCard">
             <div class="card-header">
@@ -235,8 +235,10 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"><image src="images/pikachu.jpg" class="pikachuHeader"></image>Congratulations Codémon!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <h5 class="modal-title"> -->
+          <image src="images/pikachu.jpg" class="pikachuHeader"></image>Congratulations Codémon!
+          <!-- </h5> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="LevelUp()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
