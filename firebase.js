@@ -1,6 +1,11 @@
 
 const fbURL = 'https://coolkidscode-27dac.firebaseio.com/';
 
+const config = {
+  apiKey: FbCreds.apiKey,
+  authDomain: FbCreds.authDomain
+};
+
 firebase.initializeApp(config);
 var provider = new firebase.auth.GoogleAuthProvider();
 

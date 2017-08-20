@@ -1,18 +1,10 @@
 'use strict';
 
-var config = {
-    apiKey: FbCreds.apiKey,
-    authDomain: FbCreds.authDomain
-  };
-
-firebase.initializeApp(config);
-var provider = new firebase.auth.GoogleAuthProvider();
-
 // console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
-	//check firebase for credentials 
+	//check firebase for credentials
 	//if user exists - bring back progress, scores, etc.
 	//if not user - create new user
 	//route to main app page
@@ -24,7 +16,7 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
-	//conect to the json file and grab the questions for the level 
+	//conect to the json file and grab the questions for the level
 
 }
 
