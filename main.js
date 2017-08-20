@@ -124,7 +124,7 @@ function DisplayAnswer(event){
     var current_level = $("#hidden_current_level").html();
 
 
-    
+
     GetQuestions(current_level).then(function (level_questions) {
         current_level = parseInt(current_level);
         console.log("LEVEL: ", current_level);
@@ -149,10 +149,11 @@ function CheckAnswer(is_correct){
 	var CheckAnswer = is_correct;
 	if (CheckAnswer == 1){
 		progressBar += totalPoint;
-    ProgressBar();
+    checkProgress();
     //add totalPoint to current level points
-    let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
-    userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
+    let currentLevel = $("#hidden_current_level").html();
+    let currentLevelPoints = userInfo.points[(parseInt(currentLevel) - 1)];
+    userInfo.points[(parseInt(currentLevel) - 1)] = currentLevelPoints + totalPoint;
     updateTotalPoints();
     $('#qPoints').html('<p>25</p>');
   }else{
@@ -178,7 +179,7 @@ $("#level-up").on('click', function(res){
 });
 
 var progressBar = 0;
-function ProgressBar() {
+function checkProgress() {
     var total_points = getTotalPoints()
     // var total_points = 78;
 	if (total_points > 99){
