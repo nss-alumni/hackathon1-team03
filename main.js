@@ -1,4 +1,5 @@
 'use strict';
+console.log("writing to screen");
 
 var config = {
     apiKey: FbCreds.apiKey,
@@ -25,8 +26,11 @@ function LoadUserSettings(user){
 /*main page functions*/
 function GetQuestions(level){
 	//conect to the json file and grab the questions for the level 
-
+	$.getJSON("questions.json", function(json) {
+	    console.log(json); // this will show the info it in firebug console
+	});
 }
+GetQuestions(1);
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
