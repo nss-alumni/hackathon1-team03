@@ -105,10 +105,12 @@ $('.optionCard').click(function(event) {
 });
 
 function DisplayAnswer(event){
-	var toCurrent = $("p", event.target)[0];
-	console.log("toCurrent", toCurrent.innerHTML);
-	GetQuestions('one').then(function (level_questions) {
-        current_goal = level_questions[0].goal
+    var toCurrent = $("p", event.target)[0];
+    console.log("toCurrent", toCurrent.innerHTML);
+    GetQuestions('one').then(function (level_questions) {
+        // current_goal = level_questions[0].goal
+        console.log("CURRENT GOAL: ", current_goal);
+        // $('#goal').attr("style", current_goal);
     	switch(level_questions[0].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
@@ -208,13 +210,10 @@ function ShowQuestion(level){
 
 		// Set new instructions
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
-		// Set the 4 options
-
 
         current_goal = level_questions[rand_question_index-1].goal;
 
-        console.log("CurrentGoal: ", current_goal);
-
+		// Set the 4 options
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
 	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
 	    $("#option3").html(level_questions[rand_question_index-1].options[random_options[2]]);
