@@ -12,7 +12,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 let currentUser = null;
 // let username = null;
 let userFBKey = null;
-let userInfo = null;
+// let userInfo = null;
 
 function loginUser() {
   return new Promise( (resolve, reject) => {

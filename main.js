@@ -2,16 +2,12 @@
 // console.log("writing to screen");
 
 var level = 'one';
-
-// var config = {
-//     apiKey: FbCreds.apiKey,
-//     authDomain: FbCreds.authDomain
-//   };
-
-// firebase.initializeApp(config);
-// var provider = new firebase.auth.GoogleAuthProvider();
-
-
+let userInfo = null;
+// example of userInfo:
+// { uid: 98q3uptoiahsdg
+//   username: userentry
+//   points: [125, 100, 15, etc...]
+//   }
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -55,6 +51,7 @@ $("#signInButton").on('click', function() {
 function showMainPage() {
   $('#welcomeScreen').hide();
   $('#mainScreen').show();
+  updateTotalPoints();
 }
 
 function registerNewUser(username) {
