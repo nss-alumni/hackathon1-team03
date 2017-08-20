@@ -92,9 +92,27 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
-function LevelTabs(leve){
+//Event Handlers for Level buttons
+//load and render the level that is clicked
+$("#level1Btn").on('click', () => {
+	console.log("in level button click 1");
+	GetQuestions("one");
+
+});$("#level2Btn").on('click', () => {
+	console.log("in level button click 2");
+	GetQuestions("two");
+
+});$("#level3Btn").on('click', () => {
+	console.log("in level button click 3");
+	GetQuestions("three");
+
+});$("#level4Btn").on('click', () => {
+	console.log("in level button click 4");
+	GetQuestions("four");
+});
+// function LevelTabs(level){
 	//load and render the level that was clicked
-}
+// }
 
 function NextQuestion(){
 	GetQuestions('one').then(function (levevl_questions) {
@@ -107,17 +125,15 @@ function NextQuestion(){
 	    $("#option2").html(levevl_questions[0].options[1]);
 	    $("#option3").html(levevl_questions[0].options[2]);
 	    $("#option4").html(levevl_questions[0].options[3]);
-
-
-
-
 	})
 }
 
 function LevelUp() {
-	//opens model with badge and congratse
+	//opens model with badge and congrats
 	SaveProgress();
 }
+
+
 function SaveProgress(){
 	//save the progress to firebase
 }
@@ -129,3 +145,4 @@ function logout(){
 }
 
 $("#doneBtn").on('click',logout);
+
