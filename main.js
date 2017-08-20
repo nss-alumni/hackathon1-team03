@@ -1,6 +1,7 @@
 'use strict';
 console.log("writing to screen");
 
+<<<<<<< HEAD
 // var config = {
 //     apiKey: FbCreds.apiKey,
 //     authDomain: FbCreds.authDomain
@@ -9,11 +10,13 @@ console.log("writing to screen");
 // firebase.initializeApp(config);
 // var provider = new firebase.auth.GoogleAuthProvider();
 
+=======
+>>>>>>> efe7d687c381c4697237e01498b7b4f3acc6b2a1
 // console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
-	//check firebase for credentials 
+	//check firebase for credentials
 	//if user exists - bring back progress, scores, etc.
 	//if not user - create new user
 	//route to main app page
@@ -25,6 +28,7 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
+<<<<<<< HEAD
 	//conect to the json file and grab the questions for the level 
 	$.getJSON("questions.json", function(json) {
 	    console.log(json); 
@@ -35,6 +39,10 @@ function GetQuestions(level){
 	    $("#option3").html(json.one[0].options[2]);
 	    $("#option4").html(json.one[0].options[3]);
 	});
+=======
+	//conect to the json file and grab the questions for the level
+
+>>>>>>> efe7d687c381c4697237e01498b7b4f3acc6b2a1
 }
 GetQuestions(1);
 
