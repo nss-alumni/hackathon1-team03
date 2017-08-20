@@ -8,6 +8,7 @@ let userInfo = null;
 //   username: userentry
 //   points: [125, 100, 15, etc...]
 //   }
+// var line = new ProgressBar.Line('#levelStat');
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -101,7 +102,7 @@ $('.optionCards').on("click", ".optionCard", function() {
 function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions('1').then(function (level_questions) {
 	switch(level_questions[0].type) {
     case 1 : $('#current').attr("style", toCurrent.innerHTML);
         break;
@@ -115,10 +116,17 @@ function DisplayAnswer(event){
 function CheckAnswer(){
 var totalPoint = $('#qPoints').html();
 totalPoint = parseInt(totalPoint);
-	var CheckAnswer = 1;
+	var CheckAnswer = 0;
 	if (CheckAnswer == 0){
+    console.log('check anser if true', totalPoint);
 		ProgressBar += totalPoint;
 		ProgressBar();
+    //add totalPoint to current level points
+    let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
+    console.log('currentLevelPoints', currentLevelPoints);
+    userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
+    console.log('userInfo.points', userInfo.points);
+    updateTotalPoints();
 		$('#qPoints').html('<p>25</p>');
 	}else{
 		totalPoint = totalPoint - 5;
@@ -134,22 +142,29 @@ totalPoint = parseInt(totalPoint);
 }
 
 var ProgressBar = 0;
-function ProgressBar() {
+function ProgressBar(level) {
 	if (ProgressBar > 99){
+		LevelUp();
+    //send to firebase
 		$('#levelUpModal').modal('show');
-		
 	}else{
-		GetQuestions();
+		GetQuestions(level);
 	}
 
 	//render the correct progress on the progress bar
 }
 
-function updateTotalPoints() {
+function getTotalPoints() {
   let pointTotal = userInfo.points.reduce(function(a,b) {
     return a + b;
   });
+  return pointTotal;
+}
+
+function updateTotalPoints() {
+  let pointTotal = getTotalPoints();
   $('#totalPoints').text(pointTotal);
+  updateUserInfo({points: userInfo.points});
 }
 
 
@@ -157,7 +172,8 @@ function updateTotalPoints() {
 //load and render the level that is clicked
 $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
-	level = 'one';
+
+	level = '1';
 	GetQuestions('1').then(function (level_questions) {
 		ShowQuestion(level);
 	})
@@ -166,7 +182,8 @@ $("#level1Btn").on('click', () => {
 $("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
 	level = '2';
-	GetQuestions('two').then(function (level_questions) {
+
+	GetQuestions('2').then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
@@ -174,13 +191,15 @@ $("#level2Btn").on('click', () => {
 $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
 	level = '3';
-	GetQuestions('three');
+
+	GetQuestions('3');
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
 	level = '4';
-	GetQuestions('four');
+
+	GetQuestions('4');
 });
 
 
@@ -215,7 +234,7 @@ function randOrd(){
 
 //GET GOAL BOX VALUE
 function getGoal(){
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions('1').then(function (level_questions) {
 		console.log("JSON2: ", level_questions);
 		$('#goal').attr("style", level_questions.goal);
 	})
