@@ -1,13 +1,13 @@
 'use strict';
 console.log("writing to screen");
 
-var config = {
-    apiKey: FbCreds.apiKey,
-    authDomain: FbCreds.authDomain
-  };
+// var config = {
+//     apiKey: FbCreds.apiKey,
+//     authDomain: FbCreds.authDomain
+//   };
 
-firebase.initializeApp(config);
-var provider = new firebase.auth.GoogleAuthProvider();
+// firebase.initializeApp(config);
+// var provider = new firebase.auth.GoogleAuthProvider();
 
 // console.log('hi');
 
@@ -27,7 +27,13 @@ function LoadUserSettings(user){
 function GetQuestions(level){
 	//conect to the json file and grab the questions for the level 
 	$.getJSON("questions.json", function(json) {
-	    console.log(json); // this will show the info it in firebug console
+	    console.log(json); 
+	    $("#instructions").html(json.one[0].instruction);
+
+	    $("#option1").html(json.one[0].options[0]);
+	    $("#option2").html(json.one[0].options[1]);
+	    $("#option3").html(json.one[0].options[2]);
+	    $("#option4").html(json.one[0].options[3]);
 	});
 }
 GetQuestions(1);
