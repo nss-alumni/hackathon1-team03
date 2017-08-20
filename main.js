@@ -94,23 +94,57 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
-$('.optionCard').click(function(event) {
+$('.optionCards').on("click", ".optionCard", function() {
+	console.log('this', this)
 	DisplayAnswer(event);
+	CheckAnswer();
+	$(this).removeClass('optionCard');
+	$(this).addClass('wronganswer')
 });
+
 function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
-	$('#current').attr("style", toCurrent.innerHTML);
+	GetQuestions('one').then(function (level_questions) {
+	switch(level_questions[0].type) {
+    case 1 : $('#current').attr("style", toCurrent.innerHTML);
+        break;
+    case 2 : $('#current').append(toCurrent.innerHTML);
+        break;
+    default:
+        alert('ERROR');
+    }
+	})
 }
-
 function CheckAnswer(){
+var totalPoint = $('#qPoints').html();
+totalPoint = parseInt(totalPoint);
+	var CheckAnswer = 1;
+	if (CheckAnswer == 0){
+		ProgressBar += totalPoint;
+		ProgressBar();
+		$('#qPoints').html('<p>25</p>');
+	}else{
+		totalPoint = totalPoint - 5;
+		$('#qPoints').html(totalPoint);
+		console.log('totalPoint', totalPoint)
+		console.log("event.target", $("p", event.target))
+	}
+		return totalPoint;
 	//onclick of a card this function checks if the answer is correct
 	//totalPoint starts at 25
 	//if correct - then add  points to total and move to next question
 	//if not correct - then subtract 5 points from the question score and mark the answer as unavailable
 }
 
+var ProgressBar = 0;
 function ProgressBar() {
+	if (ProgressBar > 99){
+		LevelUp();
+	}else{
+		GetQuestions();
+	}
+
 	//render the correct progress on the progress bar
 }
 
@@ -179,8 +213,7 @@ function randOrd(){
 function getGoal(){
 	GetQuestions('one').then(function (level_questions) {
 		console.log("JSON2: ", level_questions);
-		$('#goal').css("background-color", level_questions[0].goal);
-
+		$('#goal').attr("style", level_questions.goal);
 	})
 }
 getGoal();
@@ -202,8 +235,6 @@ function logout(){
 	$("#mainScreen").hide();
 	$("#endScreen").show();
 }
-
-
 
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
