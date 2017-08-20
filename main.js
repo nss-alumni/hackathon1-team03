@@ -60,16 +60,13 @@ function GetQuestions(level){
 	    });
 	})
 }
-NextQuestion();
+NextQuestion('one');
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
 	//choose an option to use for the goal display
 	//render the options on the cards
-
-
 }
-
 
 //Add event listener to card
 $('.optionCard').click(function(event) {
@@ -96,32 +93,54 @@ function LevelTabs(level){
 	//load and render the level that was clicked
 }
 
+
 function NextQuestion(){
-	GetQuestions('one').then(function (levevl_questions) {
+	GetQuestions('one').then(function (level_questions) {
 		// console.log("JSON2: ", level_questions);
 		// Set new instructions
-		$("#instructions").html(levevl_questions.instruction);
+		$("#instructions").html(level_questions.instruction);
 		// Set the 4 options
 		// Need to randomize the 0 index so we are randomizing questions
-	    $("#option1").html(levevl_questions[0].options[0]);
-	    $("#option2").html(levevl_questions[0].options[1]);
-	    $("#option3").html(levevl_questions[0].options[2]);
-	    $("#option4").html(levevl_questions[0].options[3]);
+	    $("#option1").html(level_questions[0].options[0]);
+	    $("#option2").html(level_questions[0].options[1]);
+	    $("#option3").html(level_questions[0].options[2]);
+	    $("#option4").html(level_questions[0].options[3]);
+		// Get amount of questions to generate a random number
+		var num_questions = level_questions.length;
 
+		// Random number (1-4) used to randomly choose a question
+		var rand_question_index = Math.floor((Math.random() * num_questions) + 1);
 
+		// Array of numbers to randomly sort the options for the randomly selected question
+		var random_options = [0, 1, 2, 3]
+		// Randomize the order of the array created above
+		random_options.sort(randOrd)
 
-
+		// Set new instructions
+		$("#instructions").html(level_questions[rand_question_index-1].instruction);
+		// Set the 4 options
+	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
+	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
+	    $("#option3").html(level_questions[rand_question_index-1].options[random_options[2]]);
+	    $("#option4").html(level_questions[rand_question_index-1].options[random_options[3]]);
 	})
 }
+
+
+function randOrd(){
+  return (Math.round(Math.random())-0.5);
+}
+
 
 //GET GOAL BOX VALUE
 function getGoal(){
-	GetQuestions('one').then(function (levevl_questions) {
-		console.log("JSON2: ", levevl_questions);
-		$('#goal').css("background-color", levevl_questions[0].goal);
+	GetQuestions('one').then(function (level_questions) {
+		console.log("JSON2: ", level_questions);
+		$('#goal').css("background-color", level_questions[0].goal);
 	})
 }
 getGoal();
+
 
 function LevelUp() {
 	//opens model with badge and congratse
@@ -138,5 +157,7 @@ function logout(){
 	$("#endScreen").show();
 }
 
+
+// Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
