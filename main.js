@@ -136,7 +136,8 @@ totalPoint = parseInt(totalPoint);
 var ProgressBar = 0;
 function ProgressBar() {
 	if (ProgressBar > 99){
-		LevelUp();
+		$('#levelUpModal').modal('show');
+		
 	}else{
 		GetQuestions();
 	}
@@ -222,8 +223,7 @@ function getGoal(){
 getGoal();
 
 
-// $("#levelStat").on('click',logout);
-$('#levelUpModal').modal('show');
+
 //opens model with badge and congrats
 function LevelUp(level) {
 	level++;
