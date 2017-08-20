@@ -1,16 +1,14 @@
 'use strict';
 // console.log("writing to screen");
 
-
-// var config = {
-//     apiKey: FbCreds.apiKey,
-//     authDomain: FbCreds.authDomain
-//   };
-
-// firebase.initializeApp(config);
-// var provider = new firebase.auth.GoogleAuthProvider();
-
 var current_goal;
+var level = 'one';
+let userInfo = null;
+// example of userInfo:
+// { uid: 98q3uptoiahsdg
+//   username: userentry
+//   points: [125, 100, 15, etc...]
+//   }
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -19,25 +17,48 @@ function Authenticate(){
   	//check firebase for credentials
     getUserInfo(data.user.uid)
     .then( (userData) => {
-      console.log('userData', userData);
       let FBKey = Object.keys(userData)[0];
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
-        console.log('we have a user', userData);
         //userData should be all relevant info, where are we storing it?
+        console.log('we have a user', userData);
+        showMainPage();
       } else { //if not user - create new user
-        createUserInfo();
+        $("#usernameEntry").show();
+        $('#signInButton').off('click');
+        $('#signInButton').on('click', function() {
+          let username = $("#userName").val();
+          createUserInfo(username)
+          .then( (newUserData) => {
+            getUserInfo(data.user.uid);
+          	//route to main app page
+            showMainPage();
+          })
+          .catch( (err) => {console.log('err', err); });
+        });
       }
     })
     .catch( (error) => {
       console.log('error authenticating', error);
     });
-  })
-  .catch( (error) => {
-    console.log('error loggin in', error);
-  })
-	//route to main app page
+  });
 }
+
+$("#signInButton").on('click', function() {
+  Authenticate();
+});
+
+function showMainPage() {
+  $('#welcomeScreen').hide();
+  $('#mainScreen').show();
+  updateTotalPoints();
+}
+
+function registerNewUser(username) {
+
+}
+
+
 
 function LoadUserSettings(user){
 	//take the object from firebase with user information load the correct level/progress
@@ -60,7 +81,8 @@ function GetQuestions(level){
 	    });
 	})
 }
-NextQuestion('one');
+// ShowQuestion(level);
+ShowQuestion(level);
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
@@ -72,11 +94,14 @@ function RandomizeQuestionOrder(){
 $('.optionCard').click(function(event) {
     console.log("GOAL: ", current_goal);
     console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
+	$(this).removeClass('optionCard');
+	$(this).addClass('wronganswer');
     if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
         console.log("CORRECT!!!!!!!!!!");
     }
-	DisplayAnswer(event);
-	CheckAnswer();
+    DisplayAnswer(event);
+    CheckAnswer();
+
 });
 
 function DisplayAnswer(event){
@@ -94,19 +119,21 @@ function DisplayAnswer(event){
         }
 	})
 }
-var wrong = 5;
-var totalPoint = 25;
 function CheckAnswer(){
+var totalPoint = $('#qPoints').html();
+totalPoint = parseInt(totalPoint);
 	var CheckAnswer = 1;
 	if (CheckAnswer == 0){
 		ProgressBar += totalPoint;
 		ProgressBar();
+		$('#qPoints').html('<p>25</p>');
 	}else{
-		totalPoint - 5;
-		console.log("totalPoints", totalPoint)
-		
-		//Calling progress bar to update amount
+		totalPoint = totalPoint - 5;
+		$('#qPoints').html(totalPoint);
+		console.log('totalPoint', totalPoint)
+		console.log("event.target", $("p", event.target))
 	}
+		return totalPoint;
 	//onclick of a card this function checks if the answer is correct
 	//totalPoint starts at 25
 	//if correct - then add  points to total and move to next question
@@ -116,7 +143,8 @@ function CheckAnswer(){
 var ProgressBar = 0;
 function ProgressBar() {
 	if (ProgressBar > 99){
-		LevelUp();
+		$('#levelUpModal').modal('show');
+		
 	}else{
 		GetQuestions();
 	}
@@ -124,13 +152,49 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
-function LevelTabs(level){
-	//load and render the level that was clicked
+function updateTotalPoints() {
+  let pointTotal = userInfo.points.reduce(function(a,b) {
+    return a + b;
+  });
+  $('#totalPoints').text(pointTotal);
 }
 
 
-function NextQuestion(){
+//Event Handlers for Level buttons
+//load and render the level that is clicked
+$("#level1Btn").on('click', () => {
+	console.log("in level button click 1");
+	level = 'one';
 	GetQuestions('one').then(function (level_questions) {
+
+		ShowQuestion(level);
+	})
+});
+
+$("#level2Btn").on('click', () => {
+	console.log("in level button click 2");
+	level = 'two';
+	GetQuestions('two').then(function (level_questions) {
+		ShowQuestion(level);
+	})
+});
+
+$("#level3Btn").on('click', () => {
+	console.log("in level button click 3");
+	level = 'three';
+	GetQuestions('three');
+});
+
+$("#level4Btn").on('click', () => {
+	console.log("in level button click 4");
+	level = 'four';
+	GetQuestions('four');
+});
+
+
+function ShowQuestion(level){
+	GetQuestions(level).then(function (level_questions) {
+
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -174,10 +238,14 @@ function getGoal(){
 getGoal();
 
 
-function LevelUp() {
-	//opens model with badge and congratse
+
+//opens model with badge and congrats
+function LevelUp(level) {
+	level++;
 	SaveProgress();
 }
+
+
 function SaveProgress(){
 	//save the progress to firebase
 }
@@ -188,6 +256,7 @@ function logout(){
 	$("#mainScreen").hide();
 	$("#endScreen").show();
 }
+
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
