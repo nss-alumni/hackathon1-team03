@@ -1,5 +1,5 @@
 {
-    "one":[
+    "1":[
         {
             "points": 25,
             "instruction": "Match the color!",
@@ -13,9 +13,23 @@
             "options": ["background-color : yellow;", "background-color : purple;", "background-color : white;", "background-color : black;"],
             "goal" : "purple",
             "type" : 1
+        },
+        {
+            "points": 25,
+            "instruction": "Match the border!",
+            "options": ["border: 5px solid red;", "background-color : purple;", "border: 5px dashed blue;", "border: 10px dotted green;"],
+            "goal" : "5px dashed blue;",
+            "type" : 1
+        },
+        {
+            "points": 25,
+            "instruction": "Match the border!",
+            "options": ["border: 5px solid blue;", "border: 5px dotted red;", "border: 10px dashed purple;", "background-color : green;"],
+            "goal" : "5px solid blue;",
+            "type" : 1
         }
     ],
-    "two": [
+    "2": [
         {
             "points": 25,
             "instruction": "Increase the default font-size!",
@@ -27,7 +41,23 @@
             "points": 25,
             "instruction": "Create a body tag!",
             "options": ["&lt;body&gt;&lt;/body&gt;", "&lt;p&gt;&lt;/p&gt;", "&lt;ul&gt;&lt;/ul&gt;", "&lt;html&gt;&lt;/html&gt;"],
-            "goal" : "purple",
+            "goal" : "&lt;body&gt;&lt;/body&gt;",
+            "type" : 2
+
+        },
+        {
+            "points": 25,
+            "instruction": "Change the font color!",
+            "options": ["color: blue;", "background-color : blue;", "color: purple;", "background-color : purple;"],
+            "goal" : "color: purple;",
+            "type" : 2
+
+        },
+        {
+            "points": 25,
+            "instruction": "Change the font style to bold!",
+            "options": ["color: black;", "font-style: italic;", "font-weight: bold;", "font-style: normal;"],
+            "goal" : "font-weight: bold;",
             "type" : 2
 
         }

@@ -1,7 +1,7 @@
 'use strict';
 // console.log("writing to screen");
 
-var level = 'one';
+var level = '1';
 let userInfo = null;
 // example of userInfo:
 // { uid: 98q3uptoiahsdg
@@ -158,14 +158,14 @@ function updateTotalPoints() {
 $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
 	level = 'one';
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions('1').then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
 
 $("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
-	level = 'two';
+	level = '2';
 	GetQuestions('two').then(function (level_questions) {
 		ShowQuestion(level);
 	})
@@ -173,13 +173,13 @@ $("#level2Btn").on('click', () => {
 
 $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
-	level = 'three';
+	level = '3';
 	GetQuestions('three');
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
-	level = 'four';
+	level = '4';
 	GetQuestions('four');
 });
 
