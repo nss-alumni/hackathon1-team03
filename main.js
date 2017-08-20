@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 // console.log("writing to screen");
 
 var level = '1';
@@ -155,7 +155,7 @@ function CheckAnswer(is_correct){
     let currentLevelPoints = userInfo.points[(parseInt(currentLevel) - 1)];
     userInfo.points[(parseInt(currentLevel) - 1)] = currentLevelPoints + totalPoint;
     updateTotalPoints();
-    $('#qPoints').html('<p>25</p>');
+    $('#qPoints').text('25');
   }else{
     totalPoint = totalPoint - 5;
     $('#qPoints').html(totalPoint);
@@ -212,7 +212,7 @@ function getTotalPoints() {
 function updateTotalPoints() {
   let pointTotal = getTotalPoints();
   $('#totalPoints').text(pointTotal);
-  updateUserInfo({points: userInfo.points});
+  // updateUserInfo({points: userInfo.points});
 }
 
 
