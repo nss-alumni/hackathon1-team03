@@ -172,6 +172,7 @@ function updateTotalPoints() {
 //load and render the level that is clicked
 $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
+
 	level = '1';
 	GetQuestions('1').then(function (level_questions) {
 		ShowQuestion(level);
@@ -181,6 +182,7 @@ $("#level1Btn").on('click', () => {
 $("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
 	level = '2';
+
 	GetQuestions('2').then(function (level_questions) {
 		ShowQuestion(level);
 	})
@@ -189,12 +191,14 @@ $("#level2Btn").on('click', () => {
 $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
 	level = '3';
+
 	GetQuestions('3');
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
 	level = '4';
+
 	GetQuestions('4');
 });
 
