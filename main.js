@@ -71,21 +71,50 @@ function RandomizeQuestionOrder(){
 //Add event listener to card
 $('.optionCard').click(function(event) {
 	DisplayAnswer(event);
+	CheckAnswer();
 });
+
 function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
-	$('#current').attr("style", toCurrent.innerHTML);
+	GetQuestions('one').then(function (level_questions) {
+	switch(level_questions[0].type) {
+    case 1 : $('#current').attr("style", toCurrent.innerHTML);
+        break;
+    case 2 : $('#current').append(toCurrent.innerHTML);
+        break;
+    default:
+        alert('ERROR');
+    }
+	})
 }
-
+var wrong = 5;
+var totalPoint = 25;
 function CheckAnswer(){
+	var CheckAnswer = 1;
+	if (CheckAnswer == 0){
+		ProgressBar += totalPoint;
+		ProgressBar();
+	}else{
+		totalPoint - 5;
+		console.log("totalPoints", totalPoint)
+		
+		//Calling progress bar to update amount
+	}
 	//onclick of a card this function checks if the answer is correct
 	//totalPoint starts at 25
 	//if correct - then add  points to total and move to next question
 	//if not correct - then subtract 5 points from the question score and mark the answer as unavailable
 }
 
+var ProgressBar = 0;
 function ProgressBar() {
+	if (ProgressBar > 99){
+		LevelUp();
+	}else{
+		GetQuestions();
+	}
+
 	//render the correct progress on the progress bar
 }
 
@@ -136,7 +165,7 @@ function randOrd(){
 function getGoal(){
 	GetQuestions('one').then(function (level_questions) {
 		console.log("JSON2: ", level_questions);
-		$('#goal').css("background-color", level_questions[0].goal);
+		$('#goal').attr("style", level_questions.goal);
 	})
 }
 getGoal();
@@ -156,8 +185,6 @@ function logout(){
 	$("#mainScreen").hide();
 	$("#endScreen").show();
 }
-
-
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
