@@ -182,8 +182,10 @@ var progressBar = 0;
 function checkProgress() {
     var total_points = getTotalPoints()
     // var total_points = 78;
-	if (total_points > 99){
-
+    let currentLevel = parseInt($("#hidden_current_level").html());
+    let levelPoints = userInfo.points[(currentLevel - 1)];
+	if (levelPoints > 99){
+    $("#hidden_current_level").html(currentLevel + 1);
 		$('#levelUpModal').modal('show');
 	}else{
 
@@ -212,7 +214,7 @@ function getTotalPoints() {
 function updateTotalPoints() {
   let pointTotal = getTotalPoints();
   $('#totalPoints').text(pointTotal);
-  // updateUserInfo({points: userInfo.points});
+  updateUserInfo({points: userInfo.points});
 }
 
 
