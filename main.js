@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 // console.log("writing to screen");
 
 var level = '1';
@@ -107,36 +107,29 @@ function isCorrect(event){
 }
 
 $('.optionCard').click(function(event) {
-    console.log("GOAL: ", current_goal);
-    console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
     $(this).removeClass('optionCard');
     $(this).addClass('wronganswer');
-    console.log("!!!!!");
     var is_correct = 0;
     if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
-        console.log("CORRECT!!!!!!!!!!");
         is_correct =  1;
     }
-    // is_correct = 0;
-    console.log("IS_CORRECT: ", is_correct);
     DisplayAnswer(event);
     CheckAnswer(is_correct);
 });
 
 
 function DisplayAnswer(event){
-    // var toCurrent = $("p", event.target)[0];
-
-    var toCurrent = $("#current")
+    var toCurrent = $("p", event.target)[0];
 
     var current_level = $("#hidden_current_level").html();
-    // console.log("toCurrent", toCurrent.innerHTML);
+
+
+
     GetQuestions(current_level).then(function (level_questions) {
-        console.log("Questions: ", level_questions);
-        current_goal = level_questions[0].goal
-        var current_level = parseInt($("#hidden_current_level").html());
-        console.log("CURRENT LEVEL: ", current_level);
-    	switch(level_questions[current_level].type) {
+        current_level = parseInt(current_level);
+        console.log("LEVEL: ", current_level);
+        current_goal = level_questions[current_level].goal
+      switch(level_questions[current_level].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
         case 2 : $('#current').append(toCurrent.innerHTML);
@@ -152,34 +145,47 @@ function CheckAnswer(is_correct){
     console.log("IS CORRECT: ", is_correct);
     var totalPoint = $('#qPoints').html();
     totalPoint = parseInt(totalPoint);
+    console.log("Points: ", totalPoint);
 	var CheckAnswer = is_correct;
 	if (CheckAnswer == 1){
 		progressBar += totalPoint;
-    ProgressBar();
+    checkProgress();
     //add totalPoint to current level points
-    let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
-    console.log('currentLevelPoints', currentLevelPoints);
-    userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
-    console.log('userInfo.points', userInfo.points);
+    let currentLevel = $("#hidden_current_level").html();
+    let currentLevelPoints = userInfo.points[(parseInt(currentLevel) - 1)];
+    userInfo.points[(parseInt(currentLevel) - 1)] = currentLevelPoints + totalPoint;
     updateTotalPoints();
-    $('#qPoints').html('<p>25</p>');
+    $('#qPoints').text('25');
   }else{
     totalPoint = totalPoint - 5;
     $('#qPoints').html(totalPoint);
-    console.log('totalPoint', totalPoint)
-    console.log("event.target", $("p", event.target))
   }
   return totalPoint;
 }
 
+$("#level-up").on('click', function(res){
+  $('#levelUpModal').modal('hide');
+  var current_level = $("#hidden_current_level").html();
+  $(".card").removeClass('wronganswer');
+  $(".card").addClass('optionCard');
 
+
+  ShowQuestion(current_level);
+
+  // current_level = parseInt(current_level);
+
+  // $("#hidden_current_level").html(current_level+1);
+
+});
 
 var progressBar = 0;
-function ProgressBar() {
-    // var total_points = getTotalPoints()
-    var total_points = 78;
-	if (total_points > 99){
-
+function checkProgress() {
+    var total_points = getTotalPoints()
+    // var total_points = 78;
+    let currentLevel = parseInt($("#hidden_current_level").html());
+    let levelPoints = userInfo.points[(currentLevel - 1)];
+	if (levelPoints > 99){
+    $("#hidden_current_level").html(currentLevel + 1);
 		$('#levelUpModal').modal('show');
 	}else{
 
@@ -190,6 +196,7 @@ function ProgressBar() {
         $(".card").removeClass('wronganswer');
         $(".card").addClass('optionCard');
         ShowQuestion(current_level);
+
     });
 
 	}
@@ -246,6 +253,7 @@ $("#level4Btn").on('click', () => {
 
 
 function ShowQuestion(level){
+
 
   $("#current").attr("style", "");
 	GetQuestions(level).then(function (level_questions) {
