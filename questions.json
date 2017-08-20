@@ -25,7 +25,7 @@
             "points": 25,
             "instruction": "Match the border!",
             "options": ["border: 5px solid blue;", "border: 5px dotted red;", "border: 10px dashed purple;", "background-color : green;"],
-            "goal" : "5px solid blue;",
+            "goal" : "border: 5px solid blue;",
             "type" : 1
         }
     ],

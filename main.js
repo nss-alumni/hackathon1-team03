@@ -101,18 +101,12 @@ function isCorrect(event){
 }
 
 $('.optionCard').click(function(event) {
-    console.log("GOAL: ", current_goal);
-    console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
     $(this).removeClass('optionCard');
     $(this).addClass('wronganswer');
-    console.log("!!!!!");
     var is_correct = 0;
     if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
-        console.log("CORRECT!!!!!!!!!!");
         is_correct =  1;
     }
-    // is_correct = 0;
-    console.log("IS_CORRECT: ", is_correct);
     DisplayAnswer(event);
     CheckAnswer(is_correct);
 
@@ -120,18 +114,14 @@ $('.optionCard').click(function(event) {
 
 
 function DisplayAnswer(event){
-    // var toCurrent = $("p", event.target)[0];
-
-    var toCurrent = $("#current")
+    var toCurrent = $("p", event.target)[0];
 
     var current_level = $("#hidden_current_level").html();
-    // console.log("toCurrent", toCurrent.innerHTML);
+    
     GetQuestions(current_level).then(function (level_questions) {
-        console.log("Questions: ", level_questions);
         current_goal = level_questions[0].goal
         var current_level = parseInt($("#hidden_current_level").html());
-        console.log("CURRENT LEVEL: ", current_level);
-    	switch(level_questions[current_level].type) {
+      switch(level_questions[current_level].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
         case 2 : $('#current').append(toCurrent.innerHTML);
@@ -153,16 +143,12 @@ function CheckAnswer(is_correct){
     ProgressBar();
     //add totalPoint to current level points
     let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
-    console.log('currentLevelPoints', currentLevelPoints);
     userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
-    console.log('userInfo.points', userInfo.points);
     updateTotalPoints();
     $('#qPoints').html('<p>25</p>');
   }else{
     totalPoint = totalPoint - 5;
     $('#qPoints').html(totalPoint);
-    console.log('totalPoint', totalPoint)
-    console.log("event.target", $("p", event.target))
   }
   return totalPoint;
 }
