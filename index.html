@@ -3,20 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title></title>
+  <title>Hackathan | Cool Kids Code</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Pontano+Sans" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet"> -->
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/tether/dist/css/tether.css">
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
+  <div class="container">
 
+    <nav class="navbar navbar-light bg-faded">
+      <h1 class="navbar-brand mb-0">Navbar</h1>
+    </nav>
+
+    <h1 class="coolKidsHeader">Cool Kids Code</h1>
+
+    <!-- Level Buttons across top + Total Points -->
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="card">
+          <div class="card-block">
+            <div class="btn-group">
+              <button type="button" class="btn-primary btn-xs levelButton">Level 1</button>
+              <button type="button" class="btn-primary btn-xs levelButton">Level 2</button>
+              <button type="button" class="btn-primary btn-xs levelButton">Level 3</button>
+              <button type="button" class="btn-primary btn-xs levelButton">Level 4</button>
+            </div> <!-- Level Buttons -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <div class="card">
+          <div class="card-block overallPoints">
+            <h4 class="card-title">points</h4>
+            <h4>999</h4>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+    <!-- horizontal Progress Bar for overall progress -->
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="card progressBar">
+          <div class="card-block">
+            <h5 class="card-title">Progress Bar</h5>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+    <!-- vertical Progress/Points Bar for current Level + Current space + Goal space -->
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="card workSpaceCard levelStatusBar">
+          <div class="card-block">
+            <h6 class="card-title">Level Status</h6>
+            <p class="card-text">visual for progress bar goes here</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card workSpaceCard">
+          <div class="card-block">
+            <h4 class="card-title">Your Current Styling</h4>
+            <p class="card-text">... user output goes here ... </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card workSpaceCard">
+          <div class="card-block">
+            <h4 class="card-title">Your Goal!</h4>
+            <p class="card-text">Option Target Goal Goes Here</p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+    <!-- Instructions to user -->
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="card instructions">
+          <div class="card-block">
+            <h4 class="card-title">instructions</h4>
+            <p class="card-text">Instructions to user go here</p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+    <!-- Option Cards -->
+    <div class="row optionCards">
+      <div class="col-sm-5">
+        <div class="card optionCard">
+          <div class="card-header">
+            <h4>option 1</h4>
+          </div>
+          <div class="card-block">
+            <!-- <h4 class="card-title">Special title treatment</h4> -->
+            <p class="card-text">... text for Option 1 ...</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="card optionCard">
+          <div class="card-header">
+            <h4>option 2</h4>
+          </div>
+          <div class="card-block">
+            <!-- <h4 class="card-title">Special title treatment</h4> -->
+            <p class="card-text">... text for Option 2 ...</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="card optionCard">
+          <div class="card-header">
+            <h4>option 3</h4>
+          </div>
+          <div class="card-block">
+            <!-- <h4 class="card-title">Special title treatment</h4> -->
+            <p class="card-text">... text for Option 3 ...</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="card optionCard">
+          <div class="card-header">
+            <h4>option 4</h4>
+          </div>
+          <div class="card-block">
+            <!-- <h4 class="card-title">Special title treatment</h4> -->
+            <p class="card-text">... text for Option 4 ...</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-primary btn-lg doneButton">done for now!</button>
+      </div>
+    <div> <!-- .row -->
+
+
+    
+  
+  </div> <!-- .container -->
+
+  <!-- Third Party Scripts -->
   <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="./lib/node_modules/progressbar.js/dist/progressbar.min.js"></script>
   <script type="text/javascript" src="./lib/node_modules/tether/dist/js/tether.js"></script>
   <script type="text/javascript" src="./lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
+
+  <!-- team scripts -->
   <script type="text/javascript" src="./fb-credits.js"></script>
   <script type="text/javascript" src="main.js"></script>
+
 </body>
 </html>

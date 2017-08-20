@@ -1,0 +1,77 @@
+body {
+	background-color: #F0F2BD;
+	font-family: 'Pontano Sans', sans-serif;
+}
+
+.coolKidsHeader, h4, h5, h6, .doneButton {
+	font-family: 'Patrick Hand SC', cursive;
+}
+
+/******************************************/
+/* styles for Main Page
+/******************************************/
+
+.levelButton {
+	margin: 10px 5px 10px 125px;
+}
+
+.overallPoints {
+	text-align: center;
+}
+
+.overallPoints h4 {
+	margin-bottom: 0;
+}
+
+.progressBar {
+	margin: 10px;
+}
+
+.progressBar h5 {
+	margin: 10px 10px;
+}
+
+.workSpaceCard {
+    min-height: 200px;
+}
+
+.workSpaceCard h4, p {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.levelStatusBar {
+	max-width: 75px;
+	margin-left: 50px;
+}
+
+.levelStatusBar h6 {
+	text-align: center;
+}
+
+.instructions {
+	margin: 10px;
+}
+
+.instructions h4 {
+	margin: 5px 10px 0 10px;
+}
+
+.instructions p {
+	margin-top: 0;
+	margin-left: 10px;
+}
+
+.optionCards .card {
+	margin-top: 30px;
+    min-height: 200px;
+}
+
+.optionCards .card-header {
+	background-color: #BDF2DA;
+}
+
+.doneButton {
+	margin-top: 40px;
+	margin-left: 390px;
+}
