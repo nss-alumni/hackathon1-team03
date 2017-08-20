@@ -13,6 +13,20 @@
             "options": ["background-color : yellow;", "background-color : purple;", "background-color : white;", "background-color : black;"],
             "goal" : "background-color : purple;",
             "type" : 1
+        },
+        {
+            "points": 25,
+            "instruction": "Match the border!",
+            "options": ["border: 5px solid red;", "background-color : purple;", "border: 5px dashed blue;", "border: 10px dotted green;"],
+            "goal" : "5px dashed blue;",
+            "type" : 1
+        },
+        {
+            "points": 25,
+            "instruction": "Match the border!",
+            "options": ["border: 5px solid blue;", "border: 5px dotted red;", "border: 10px dashed purple;", "background-color : green;"],
+            "goal" : "5px solid blue;",
+            "type" : 1
         }
     ],
     "2": [
@@ -27,9 +41,53 @@
             "points": 25,
             "instruction": "Create a body tag!",
             "options": ["&lt;body&gt;&lt;/body&gt;", "&lt;p&gt;&lt;/p&gt;", "&lt;ul&gt;&lt;/ul&gt;", "&lt;html&gt;&lt;/html&gt;"],
-            "goal" : "purple",
+            "goal" : "&lt;body&gt;&lt;/body&gt;",
             "type" : 2
 
+        },
+        {
+            "points": 25,
+            "instruction": "Change the font color!",
+            "options": ["color: blue;", "background-color : blue;", "color: purple;", "background-color : purple;"],
+            "goal" : "color: purple;",
+            "type" : 2
+        },
+        {
+            "points": 25,
+            "instruction": "Change the font style to bold!",
+            "options": ["color: black;", "font-style: italic;", "font-weight: bold;", "font-style: normal;"],
+            "goal" : "font-weight: bold;",
+            "type" : 2
+        }
+    ],
+    "3": [
+        {
+            "points": 25,
+            "instruction": "Choose the biggest header tag!",
+            "options": ["&lt;h1&gt;This one?&lt;/h1&gt", "&lt;h3&gt;This one?&lt;/h3&gt", "&lt;h4&gt;This one?&lt;/h4&gt", "&lt;h6&gt;This one?&lt;/h6&gt"],
+            "goal" : "font-size: 2em",
+            "type" : 3
+        },
+        {
+            "points": 25,
+            "instruction": "Center this heading!",
+            "options": ["&lt;h4 style='text-align: left;'&lt;Center this Heading&lt;/h4&lt;", "&lt;h4 style='text-align: right;'&lt;Center this Heading&lt;/h4&lt;", "&lt;h4 style='text-align: center;'&lt;Center this Heading&lt;/h4&lt;", "&lt;h4 style='text-align: justify;'&lt;Center this Heading&lt;/h4&lt;"],
+            "goal" : "&lt;h4 style='text-align: center;'&lt;Center this Heading&lt;/h4&lt;",
+            "type" : 3
+        },
+        {
+            "points": 25,
+            "instruction": "Right align this paragraph!",
+            "options": ["&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;", "&lt;p style='text-align: right;'&lt;Right-align this paragraph...&lt;/p&lt;", "&lt;p style='text-align: center;'&lt;Right-align this paragraph...&lt;/p&lt;", "&lt;p style='text-align: justify;'&lt;Right-align this paragraph...&lt;/p&lt;"],
+            "goal" : "&lt;p style='text-align: center;'&lt;Right-align this paragraph...&lt;/p&lt;",
+            "type" : 3
+        },
+        {
+            "points": 25,
+            "instruction": "Add a horizontal line below this paragraph!",
+            "options": ["&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;&lt;/hr&lt;", "&lt;/hr&lt;&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;", "&lt;/hr&lt;&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;&lt;/hr&lt;",  "&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;&lt;/hr&lt;"],
+            "goal" : "&lt;p style='text-align: left;'&lt;Right-align this paragraph...&lt;/p&lt;&lt;/hr&lt;",
+            "type" : 3
         }
     ]
 }
