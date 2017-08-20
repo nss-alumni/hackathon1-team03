@@ -2,7 +2,6 @@
 console.log("writing to screen");
 
 
-
 // var config = {
 //     apiKey: FbCreds.apiKey,
 //     authDomain: FbCreds.authDomain
@@ -27,8 +26,6 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
-
-
 	return new Promise ( (resolve, reject) => {
         $.getJSON("questions.json", function(json) {
             if (json){
@@ -45,6 +42,10 @@ function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
 	//choose an option to use for the goal display
 	//render the options on the cards
+
+
+
+
 }
 
 
@@ -75,12 +76,17 @@ function LevelTabs(leve){
 
 function NextQuestion(){
 	GetQuestions(1).then(function (json) {
+		// Set new instructions
 		$("#instructions").html(json.one[0].instruction);
-
+		// Set the 4 options
 	    $("#option1").html(json.one[0].options[0]);
 	    $("#option2").html(json.one[0].options[1]);
 	    $("#option3").html(json.one[0].options[2]);
 	    $("#option4").html(json.one[0].options[3]);
+
+
+
+
 	})
 }
 
