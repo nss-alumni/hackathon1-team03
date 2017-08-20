@@ -20,7 +20,7 @@
 
 
   <!-- WELCOME SCREEN -->
-  <div id="welcomeScreen" container="container welcomePage" style="display: none">
+  <div id="welcomeScreen" container="container welcomePage">
 
     <div class="row">
       <div class="col-sm-4"></div>
@@ -30,20 +30,13 @@
 
         <form class="form-signin">
           <h2 class="form-signin-heading">please sign in</h2>
-          <!-- <label for="input Email" class="sr-only">Email address</label> -->
-          <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-
-          <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
-          <label for="password" class="sr-only" placeholder="Password"></label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="password" required>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="remember-me">
-                remember me
-            </label>
+          <div id="usernameEntry" style="display: none">
+            <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
+            <p>please enter username</p>
           </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" type="submit">login</button>
-
+            <div id="signInButton" class="btn btn-primary">
+              <img src="./images/googleButton.png">
+            </div>
         </form>
 
       </div>
@@ -51,14 +44,14 @@
   </div> <!-- .container -->
 
     <!-- END SCREEN -->
-    
+
   <div id="endScreen" class="container endPage" style="display: none">
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
 
           <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
-          
+
           <div class="card badge">
             <div class="card-header">
               <h3 class="card-title">some kind of badge image here</h3>
@@ -82,7 +75,7 @@
 
 
   <!-- MAIN SCREEN -->
-  <div id="mainScreen" class="container">
+  <div id="mainScreen" class="container" style="display: none">
     <!-- <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1> -->
 
     <!-- Level Buttons across top + Total Points -->
@@ -96,10 +89,10 @@
         <div class="card">
           <div class="card-block">
             <div class="btn-group">
-              <button type="button" class="btn-primary btn-xs levelButton">Level 1</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 2</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 3</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 4</button>
+              <button id="level1Btn" type="button" class="btn-primary btn-xs levelButton">Level 1</button>
+              <button id="level2Btn" type="button" class="btn-primary btn-xs levelButton">Level 2</button>
+              <button id="level3Btn" type="button" class="btn-primary btn-xs levelButton">Level 3</button>
+              <button id="level4Btn" type="button" class="btn-primary btn-xs levelButton">Level 4</button>
             </div> <!-- Level Buttons -->
           </div>
         </div>
@@ -225,7 +218,8 @@
       <div class="col-sm-4">
         <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
-    <div> <!-- .row -->
+    </div> <!-- .row -->
+  </div>
 
 
     <!-- END SCREEN -->
@@ -236,7 +230,7 @@
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
-        
+
         <div class="card badge">
           <div class="card-header">
             <h3 class="card-title">some kind of badge image here</h3>
@@ -256,7 +250,8 @@
 
       </div>
     </div> <!-- .row -->
-  
+  </div>
+
 
   </div> <!-- .container -->
 
@@ -269,7 +264,7 @@
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
-        
+
         <div class="card badge">
           <div class="card-header">
             <h3 class="card-title">some kind of badge image here</h3>
@@ -289,7 +284,7 @@
 
       </div>
     </div> <!-- .row -->
-  
+
 
   </div> <!-- .container -->
 

@@ -1,6 +1,7 @@
 'use strict';
 // console.log("writing to screen");
 
+var level = 'one';
 
 // var config = {
 //     apiKey: FbCreds.apiKey,
@@ -24,20 +25,43 @@ function Authenticate(){
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
         console.log('we have a user', userData);
+        showMainPage();
         //userData should be all relevant info, where are we storing it?
       } else { //if not user - create new user
-        createUserInfo();
+        $("#usernameEntry").show();
+        $('#signInButton').off('click');
+        $('#signInButton').on('click', function() {
+          let username = $("#userName").val();
+          createUserInfo(username)
+          .then( (newUserData) => {
+            getUserInfo(data.user.uid);
+          	//route to main app page
+            showMainPage();
+          })
+          .catch( (err) => {console.log('err', err); });
+        });
       }
     })
     .catch( (error) => {
       console.log('error authenticating', error);
     });
-  })
-  .catch( (error) => {
-    console.log('error loggin in', error);
-  })
-	//route to main app page
+  });
 }
+
+$("#signInButton").on('click', function() {
+  Authenticate();
+});
+
+function showMainPage() {
+  $('#welcomeScreen').hide();
+  $('#mainScreen').show();
+}
+
+function registerNewUser(username) {
+
+}
+
+
 
 function LoadUserSettings(user){
 	//take the object from firebase with user information load the correct level/progress
@@ -60,7 +84,8 @@ function GetQuestions(level){
 	    });
 	})
 }
-NextQuestion('one');
+// ShowQuestion(level);
+ShowQuestion(level);
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
@@ -123,22 +148,40 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
-function LevelTabs(level){
-	//load and render the level that was clicked
-}
 
-
-function NextQuestion(){
+//Event Handlers for Level buttons
+//load and render the level that is clicked
+$("#level1Btn").on('click', () => {
+	console.log("in level button click 1");
+	level = 'one';
 	GetQuestions('one').then(function (level_questions) {
-		// console.log("JSON2: ", level_questions);
-		// Set new instructions
-		$("#instructions").html(level_questions.instruction);
-		// Set the 4 options
-		// Need to randomize the 0 index so we are randomizing questions
-	    $("#option1").html(level_questions[0].options[0]);
-	    $("#option2").html(level_questions[0].options[1]);
-	    $("#option3").html(level_questions[0].options[2]);
-	    $("#option4").html(level_questions[0].options[3]);
+		ShowQuestion(level);
+	})
+});
+
+$("#level2Btn").on('click', () => {
+	console.log("in level button click 2");
+	level = 'two';
+	GetQuestions('two').then(function (level_questions) {
+		ShowQuestion(level);
+	})
+});
+
+$("#level3Btn").on('click', () => {
+	console.log("in level button click 3");
+	level = 'three';
+	GetQuestions('three');
+});
+
+$("#level4Btn").on('click', () => {
+	console.log("in level button click 4");
+	level = 'four';
+	GetQuestions('four');
+});
+
+
+function ShowQuestion(level){
+	GetQuestions(level).then(function (level_questions) {
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -177,9 +220,11 @@ getGoal();
 
 
 function LevelUp() {
-	//opens model with badge and congratse
+	//opens model with badge and congrats
 	SaveProgress();
 }
+
+
 function SaveProgress(){
 	//save the progress to firebase
 }
@@ -190,6 +235,7 @@ function logout(){
 	$("#mainScreen").hide();
 	$("#endScreen").show();
 }
+
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
