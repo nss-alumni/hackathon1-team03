@@ -10,6 +10,7 @@ firebase.initializeApp(config);
 var provider = new firebase.auth.GoogleAuthProvider();
 
 let currentUser = null;
+let username = null;
 let userFBKey = null;
 
 function loginUser() {
@@ -55,7 +56,8 @@ function getUserInfo() {
 function createUserInfo() {
   return new Promise( (resolve, reject) => {
     let userObject = {
-      uid: currentUser
+      uid: currentUser,
+      name: username
     };
     $.ajax({
       url: `${fbURL}user.json`,
