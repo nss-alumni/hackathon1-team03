@@ -1,6 +1,7 @@
 'use strict';
 console.log("writing to screen");
 
+
 // var config = {
 //     apiKey: FbCreds.apiKey,
 //     authDomain: FbCreds.authDomain
@@ -9,11 +10,12 @@ console.log("writing to screen");
 // firebase.initializeApp(config);
 // var provider = new firebase.auth.GoogleAuthProvider();
 
+
 // console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
-	//check firebase for credentials 
+	//check firebase for credentials
 	//if user exists - bring back progress, scores, etc.
 	//if not user - create new user
 	//route to main app page
@@ -25,6 +27,7 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
+
 
 	return new Promise ( (resolve, reject) => {
         $.getJSON("questions.json", function(json) {
