@@ -1,14 +1,16 @@
 {
     "one":[
         {
-            "points": 5,
-            "instruction": "Do something else",
-            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+            "points": 25,
+            "instruction": "Match the color!",
+            "options": ["red", "blue", "green", "orange"],
+            "goal" : "red"
         },
         {
-            "points": 5,
-            "instruction": "Do something else",
-            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+            "points": 25,
+            "instruction": "Match the color!",
+            "options": ["yellow", "purple", "white", "black"],
+            "goal" : "red"
         }
     ]
 }

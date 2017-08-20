@@ -92,15 +92,4 @@ function SaveProgress(){
 	//save the progress to firebase
 }
 
-function logout(){
-	//log user out and show credits page
-}
-
-// event handler for <Done For Now> button
-// $("#doneBtn").click(() => {
-// 	console.log("in click");
-// 	$("#mainScreen").hide();
-// 	$("#endScreen").removeAttr("hidden");
-// });
-
 
