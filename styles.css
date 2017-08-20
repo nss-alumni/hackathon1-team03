@@ -3,8 +3,12 @@ body {
 	font-family: 'Pontano Sans', sans-serif;
 }
 
-.coolKidsHeader, .welcomePage, h4, h5, h6, .doneButton {
+.coolKidsHeader, .welcomePage, .endPage, h4, h5, h6, .doneButton {
 	font-family: 'Patrick Hand SC', cursive;
+}
+
+.card {
+	border-radius: 15px;
 }
 
 /******************************************/
@@ -75,3 +79,35 @@ body {
 	margin-top: 40px;
 	margin-left: 390px;
 }
+
+
+
+
+/******************************************/
+/* styles for End Page
+/******************************************/
+
+.endCard h1, h2{
+	text-align: center;
+}
+
+.endCard {
+	margin-top: 25px;
+}
+
+.endCard .card-header {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background-color: #BDF2DA;
+}
+
+.dismissButton {
+	margin-top: 25px;
+	margin-left: 135px;
+}
+
+.coolKidsHeaderEndPage, .credits {
+	margin-top: 50px;
+	text-align: center;
+}
+
