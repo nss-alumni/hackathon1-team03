@@ -1,9 +1,15 @@
 {
-    "one": {
-        "points": 5,
-        "instruction": "Do something",
-        "options": ["Option 1", "Option 2", "option 3"]
-    }
+    "one":[
+        {
+            "points": 5,
+            "instruction": "Do something else",
+            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+        },
+        {
+            "points": 5,
+            "instruction": "Do something else",
+            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+        }
+    ]
 }
-
 
