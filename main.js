@@ -1,8 +1,8 @@
 'use strict';
 // console.log("writing to screen");
 
-<<<<<<< HEAD
-var level = 'one';
+var level = '1';
+var current_goal;
 
 var selectSound = new Audio('audio/select.wav');
 var back = new Audio('audio/back.wav');
@@ -16,19 +16,6 @@ $('#saveProgressButton').click(function(){
 
 let userInfo = null;
 
-=======
-
-var current_goal;
-var level = '1';
-
-let userInfo = null;
-// example of userInfo:
-// { uid: 98q3uptoiahsdg
-//   username: userentry
-//   points: [125, 100, 15, etc...]
-//   }
-// var line = new ProgressBar.Line('#levelStat');
->>>>>>> master
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -112,15 +99,7 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
-<<<<<<< HEAD
-$('.optionCards').on("click", ".optionCard", function() {
-	console.log('this', this)
-	DisplayAnswer(event);
-	CheckAnswer();
-	$(this).removeClass('optionCard');
-	$(this).addClass('wronganswer')
-	selectSound.play();
-=======
+
 
 
 function isCorrect(event){
@@ -142,8 +121,6 @@ $('.optionCard').click(function(event) {
     console.log("IS_CORRECT: ", is_correct);
     DisplayAnswer(event);
     CheckAnswer(is_correct);
-
->>>>>>> master
 });
 
 
