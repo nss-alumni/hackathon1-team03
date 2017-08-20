@@ -120,7 +120,9 @@ $('.optionCard').click(function(event) {
 
 
 function DisplayAnswer(event){
-    var toCurrent = $("p", event.target)[0];
+    // var toCurrent = $("p", event.target)[0];
+
+    var toCurrent = $("#current")
 
     var current_level = $("#hidden_current_level").html();
     // console.log("toCurrent", toCurrent.innerHTML);
@@ -180,6 +182,8 @@ function ProgressBar() {
 		GetQuestions(current_level).then( function(response){
         // current_level += 1;
         current_level = '2';
+        $(".card").removeClass('wronganswer');
+        $(".card").addClass('optionCard');
         ShowQuestion(current_level);
     });
 
