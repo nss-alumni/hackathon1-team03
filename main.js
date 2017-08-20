@@ -1,6 +1,7 @@
 'use strict';
 // console.log("writing to screen");
 
+var current_goal;
 var level = 'one';
 let userInfo = null;
 // example of userInfo:
@@ -90,26 +91,34 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
-$('.optionCards').on("click", ".optionCard", function() {
-	console.log('this', this)
-	DisplayAnswer(event);
-	CheckAnswer();
+$('.optionCard').click(function(event) {
+    console.log("GOAL: ", current_goal);
+    console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
 	$(this).removeClass('optionCard');
-	$(this).addClass('wronganswer')
+	$(this).addClass('wronganswer');
+    if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
+        console.log("CORRECT!!!!!!!!!!");
+    }
+    DisplayAnswer(event);
+    CheckAnswer();
+
 });
 
 function DisplayAnswer(event){
-	var toCurrent = $("p", event.target)[0];
-	console.log("toCurrent", toCurrent.innerHTML);
-	GetQuestions('one').then(function (level_questions) {
-	switch(level_questions[0].type) {
-    case 1 : $('#current').attr("style", toCurrent.innerHTML);
-        break;
-    case 2 : $('#current').append(toCurrent.innerHTML);
-        break;
-    default:
-        alert('ERROR');
-    }
+    var toCurrent = $("p", event.target)[0];
+    console.log("toCurrent", toCurrent.innerHTML);
+    GetQuestions('one').then(function (level_questions) {
+        // current_goal = level_questions[0].goal
+        console.log("CURRENT GOAL: ", current_goal);
+        // $('#goal').attr("style", current_goal);
+    	switch(level_questions[0].type) {
+        case 1 : $('#current').attr("style", toCurrent.innerHTML);
+            break;
+        case 2 : $('#current').append(toCurrent.innerHTML);
+            break;
+        default:
+            alert('ERROR');
+        }
 	})
 }
 function CheckAnswer(){
@@ -159,6 +168,7 @@ $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
 	level = 'one';
 	GetQuestions('one').then(function (level_questions) {
+
 		ShowQuestion(level);
 	})
 });
@@ -186,6 +196,7 @@ $("#level4Btn").on('click', () => {
 
 function ShowQuestion(level){
 	GetQuestions(level).then(function (level_questions) {
+
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -199,6 +210,9 @@ function ShowQuestion(level){
 
 		// Set new instructions
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
+
+        current_goal = level_questions[rand_question_index-1].goal;
+
 		// Set the 4 options
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
 	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
@@ -245,3 +259,8 @@ function logout(){
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
+
+
+function isCorrect(){
+
+}
