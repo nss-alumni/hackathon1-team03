@@ -8,6 +8,7 @@ let userInfo = null;
 //   username: userentry
 //   points: [125, 100, 15, etc...]
 //   }
+// var line = new ProgressBar.Line('#levelStatusBar');
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -115,8 +116,9 @@ function DisplayAnswer(event){
 function CheckAnswer(){
 var totalPoint = $('#qPoints').html();
 totalPoint = parseInt(totalPoint);
-	var CheckAnswer = 1;
+	var CheckAnswer = 0;
 	if (CheckAnswer == 0){
+    console.log('check anser if true', totalPoint);
 		ProgressBar += totalPoint;
 		ProgressBar();
     //add totalPoint to current level points
@@ -140,21 +142,26 @@ totalPoint = parseInt(totalPoint);
 }
 
 var ProgressBar = 0;
-function ProgressBar() {
+function ProgressBar(level) {
 	if (ProgressBar > 99){
 		LevelUp();
     //send to firebase
 	}else{
-		GetQuestions();
+		GetQuestions(level);
 	}
 
 	//render the correct progress on the progress bar
 }
 
-function updateTotalPoints() {
+function getTotalPoints() {
   let pointTotal = userInfo.points.reduce(function(a,b) {
     return a + b;
   });
+  return pointTotal;
+}
+
+function updateTotalPoints() {
+  let pointTotal = getTotalPoints();
   $('#totalPoints').text(pointTotal);
   updateUserInfo({points: userInfo.points});
 }
