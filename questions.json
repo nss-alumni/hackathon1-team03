@@ -1,14 +1,24 @@
 {
     "one":[
         {
-            "points": 5,
-            "instruction": "Do something else",
-            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+            "points": 25,
+            "instruction": "Do something else 1",
+            "options": ["(1) Option 1", "Option 2", "option 3", "Option 4"]
         },
         {
-            "points": 5,
-            "instruction": "Do something else",
-            "options": ["Option 1", "Option 2", "option 3", "Option 4"]
+            "points": 25,
+            "instruction": "Do something else 2",
+            "options": ["(2) Option 1", "(2) Option 2", "(2) option 3", "(2) Option 4"]
+        },
+        {
+            "points": 25,
+            "instruction": "Do something else 3",
+            "options": ["(3) Option 1", "Option 2", "option 3", "Option 4"]
+        },
+        {
+            "points": 25,
+            "instruction": "Do something else 4",
+            "options": ["(4) Option 1", "Option 2", "option 3", "Option 4"]
         }
     ]
 }

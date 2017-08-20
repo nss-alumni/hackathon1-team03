@@ -74,22 +74,32 @@ function LevelTabs(leve){
 }
 
 function NextQuestion(){
-	GetQuestions('one').then(function (levevl_questions) {
-		console.log("JSON2: ", levevl_questions);
+	GetQuestions('one').then(function (level_questions) {
+		console.log("JSON23: ", level_questions);
+
+
+		// Random number (1-4) used to randomly choose a question
+		var rand_question_index = Math.floor((Math.random() * 4) + 1);
+		// Array of numbers to randomly sort the options for the randomly selected question
+		var random_options = [0, 1, 2, 3]
+		// Randomize the order of the array created above
+		random_options.sort(randOrd)
+
 		// Set new instructions
-		$("#instructions").html(levevl_questions.instruction);
+		$("#instructions").html(level_questions[rand_question_index-1].instruction);
 		// Set the 4 options
 		// Need to randomize the 0 index so we are randomizing questions
-	    $("#option1").html(levevl_questions[0].options[0]);
-	    $("#option2").html(levevl_questions[0].options[1]);
-	    $("#option3").html(levevl_questions[0].options[2]);
-	    $("#option4").html(levevl_questions[0].options[3]);
-
-
-
-
+	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
+	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
+	    $("#option3").html(level_questions[rand_question_index-1].options[random_options[2]]);
+	    $("#option4").html(level_questions[rand_question_index-1].options[random_options[3]]);
 	})
 }
+
+function randOrd(){
+  return (Math.round(Math.random())-0.5);
+}
+
 
 function LevelUp() {
 	//opens model with badge and congratse
