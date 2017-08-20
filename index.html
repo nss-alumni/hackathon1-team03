@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Hackathan | Cool Kids Code</title>
+  <title>Hackathan | Codémon</title>
 
   <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Pontano+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/tether/dist/css/tether.css">
@@ -26,27 +26,17 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
 
-        <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+        <h1 class="coolKidsHeaderCentered">Codémon</h1>
 
         <form class="form-signin">
           <h2 class="form-signin-heading">please sign in</h2>
-          <!-- <label for="input Email" class="sr-only">Email address</label> -->
-          <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
           <div id="usernameEntry" style="display: none">
             <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
             <p>please enter username</p>
           </div>
-          <!-- <label for="password" class="sr-only" placeholder="Password"></label> -->
-<!--           <input type="password" id="inputPassword" class="form-control" placeholder="password" required -->
-      <!-- <div class="checkbox"> -->
-            <!-- <label>
-              <input type="checkbox" value="remember-me">
-                remember me
-            </label> -->
             <div id="signInButton" class="btn btn-primary">
               <img src="./images/googleButton.png">
             </div>
-
         </form>
 
       </div>
@@ -91,7 +81,7 @@
     <!-- Level Buttons across top + Total Points -->
     <div class="row">
       <div class="col-sm-10">
-          <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+          <h1 class="coolKidsHeaderCentered">Codémon</h1>
       </div>
     </div>
     <div class="row">
@@ -99,10 +89,10 @@
         <div class="card">
           <div class="card-block">
             <div class="btn-group">
-              <button type="button" class="btn-primary btn-xs levelButton">Level 1</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 2</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 3</button>
-              <button type="button" class="btn-primary btn-xs levelButton">Level 4</button>
+              <button id="level1Btn" type="button" class="btn-primary btn-xs levelButton">Level 1</button>
+              <button id="level2Btn" type="button" class="btn-primary btn-xs levelButton">Level 2</button>
+              <button id="level3Btn" type="button" class="btn-primary btn-xs levelButton">Level 3</button>
+              <button id="level4Btn" type="button" class="btn-primary btn-xs levelButton">Level 4</button>
             </div> <!-- Level Buttons -->
           </div>
         </div>
@@ -139,10 +129,10 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="card workSpaceCard">
+        <div class="card workSpaceCard" id="current">
           <div class="card-block">
             <h4 class="card-title">Your Current Styling</h4>
-            <p class="card-text" id="current">... user output goes here ... </p>
+            <p class="card-text">... user output goes here ... </p>
           </div>
         </div>
       </div>
@@ -228,6 +218,7 @@
     </div> <!-- .row -->
   </div>
 
+
     <!-- END SCREEN -->
     <div id="endScreen" class="container endPage" hidden>
 
@@ -235,7 +226,7 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
 
-        <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+        <h1 class="coolKidsHeaderCentered">Codémon</h1>
 
         <div class="card badge">
           <div class="card-header">
@@ -252,15 +243,47 @@
             </div>
         </div>
 
-        <button type="button" id="dismissBtn" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
 
       </div>
     </div> <!-- .row -->
   </div>
 
 
+  </div> <!-- .container -->
 
 
+  <!-- END SCREEN -->
+    <div id="endScreen" class="container endPage" hidden>
+
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+
+        <h1 class="coolKidsHeaderCentered">Codémon</h1>
+
+        <div class="card badge">
+          <div class="card-header">
+            <h3 class="card-title">some kind of badge image here</h3>
+          </div>
+        </div>
+
+        <div class="card endCard">
+            <div class="card-header">
+              <h1 class="congrats">congrats!!!</h1>
+            </div>
+            <div class="card-block">
+              <h2 class="levelUp">level up to {i}</h2>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
+
+      </div>
+    </div> <!-- .row -->
+
+
+  </div> <!-- .container -->
 
 
   <!-- Third Party Scripts -->
