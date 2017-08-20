@@ -122,10 +122,13 @@ function DisplayAnswer(event){
     var toCurrent = $("p", event.target)[0];
 
     var current_level = $("#hidden_current_level").html();
+
+
     
     GetQuestions(current_level).then(function (level_questions) {
-        current_goal = level_questions[0].goal
-        var current_level = parseInt($("#hidden_current_level").html());
+        current_level = parseInt(current_level);
+        console.log("LEVEL: ", current_level);
+        current_goal = level_questions[current_level].goal
       switch(level_questions[current_level].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
@@ -142,6 +145,7 @@ function CheckAnswer(is_correct){
     console.log("IS CORRECT: ", is_correct);
     var totalPoint = $('#qPoints').html();
     totalPoint = parseInt(totalPoint);
+    console.log("Points: ", totalPoint);
 	var CheckAnswer = is_correct;
 	if (CheckAnswer == 1){
 		progressBar += totalPoint;
@@ -158,12 +162,25 @@ function CheckAnswer(is_correct){
   return totalPoint;
 }
 
+$("#level-up").on('click', function(res){
+  $('#levelUpModal').modal('hide');
+  var current_level = $("#hidden_current_level").html();
+  $(".card").removeClass('wronganswer');
+  $(".card").addClass('optionCard');
 
+
+  ShowQuestion(current_level);
+
+  // current_level = parseInt(current_level);
+
+  // $("#hidden_current_level").html(current_level+1);
+
+});
 
 var progressBar = 0;
 function ProgressBar() {
-    // var total_points = getTotalPoints()
-    var total_points = 78;
+    var total_points = getTotalPoints()
+    // var total_points = 78;
 	if (total_points > 99){
 
 		$('#levelUpModal').modal('show');
@@ -176,6 +193,7 @@ function ProgressBar() {
         $(".card").removeClass('wronganswer');
         $(".card").addClass('optionCard');
         ShowQuestion(current_level);
+
     });
 
 	}
@@ -232,6 +250,7 @@ $("#level4Btn").on('click', () => {
 
 
 function ShowQuestion(level){
+
 
   $("#current").attr("style", "");
 	GetQuestions(level).then(function (level_questions) {
