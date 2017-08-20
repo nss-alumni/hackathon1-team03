@@ -3,13 +3,30 @@ body {
 	font-family: 'Pontano Sans', sans-serif;
 }
 
-.coolKidsHeader, .welcomePage, .endPage, h4, h5, h6, .doneButton {
+.coolKidsHeaderCentered, .welcomePage, .endPage, h4, h5, h6, .doneButton {
 	font-family: 'Patrick Hand SC', cursive;
+}
+
+.coolKidsHeaderCentered {
+	margin-top: 50px;
+	text-align: center;
 }
 
 .card {
 	border-radius: 15px;
 }
+
+
+
+/******************************************/
+/* styles for Welcome Page
+/******************************************/
+
+input {
+	margin-top: 10px;
+}
+
+
 
 /******************************************/
 /* styles for Main Page
@@ -73,13 +90,13 @@ body {
 
 .optionCards .card-header {
 	background-color: #BDF2DA;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 .doneButton {
 	margin-top: 40px;
-	margin-left: 390px;
 }
-
 
 
 
@@ -87,7 +104,7 @@ body {
 /* styles for End Page
 /******************************************/
 
-.endCard h1, h2{
+.endCard h1, h2 {
 	text-align: center;
 }
 
@@ -103,11 +120,11 @@ body {
 
 .dismissButton {
 	margin-top: 25px;
-	margin-left: 135px;
 }
 
-.coolKidsHeaderEndPage, .credits {
+.credits {
 	margin-top: 50px;
 	text-align: center;
 }
+
 
