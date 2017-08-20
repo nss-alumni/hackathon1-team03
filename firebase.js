@@ -59,7 +59,7 @@ function createUserInfo() {
     };
     $.ajax({
       url: `${fbURL}user.json`,
-      method: post,
+      method: "POST",
       data: JSON.stringify(userObject)
     }).done( (userData) => {
       console.log('userData', userData);
@@ -76,7 +76,7 @@ function updateUserInfo(userStatsObject) {
   return new Promise( (resolve, reject) => {
     $.ajax({
       url: `${fbURL}user/${userFBKey}.json`,
-      method: patch,
+      method: "PATCH",
       data: JSON.stringify(userStatsObject)
     }).done( (userData) => {
       console.log('userData', userData);
