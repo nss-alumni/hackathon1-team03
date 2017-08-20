@@ -10,8 +10,9 @@ firebase.initializeApp(config);
 var provider = new firebase.auth.GoogleAuthProvider();
 
 let currentUser = null;
-let username = null;
+// let username = null;
 let userFBKey = null;
+let userInfo = null;
 
 function loginUser() {
   return new Promise( (resolve, reject) => {
@@ -42,9 +43,10 @@ function getUserInfo(uid) {
     $.ajax({
       url: `${fbURL}user.json?orderBy="uid"&equalTo="${uid}"`
     }).done( (userData) => {
-      console.log('userData', userData);
+      // console.log('userData', userData);
+      userInfo = userData;
       let userFBKey = Object.keys(userData)[0];
-      console.log('userFBKey', userFBKey);
+      // console.log('userFBKey', userFBKey);
       resolve(userData);
     }).fail((err)=>{
       console.log('error getting user FB info', err);
@@ -53,7 +55,7 @@ function getUserInfo(uid) {
   });
 }
 
-function createUserInfo() {
+function createUserInfo(username) {
   return new Promise( (resolve, reject) => {
     let userObject = {
       uid: currentUser,

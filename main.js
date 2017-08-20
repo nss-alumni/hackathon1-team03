@@ -24,20 +24,43 @@ function Authenticate(){
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
         console.log('we have a user', userData);
+        showMainPage();
         //userData should be all relevant info, where are we storing it?
       } else { //if not user - create new user
-        createUserInfo();
+        $("#usernameEntry").show();
+        $('#signInButton').off('click');
+        $('#signInButton').on('click', function() {
+          let username = $("#userName").val();
+          createUserInfo(username)
+          .then( (newUserData) => {
+            getUserInfo(data.user.uid);
+          	//route to main app page
+            showMainPage();
+          })
+          .catch( (err) => {console.log('err', err); });
+        });
       }
     })
     .catch( (error) => {
       console.log('error authenticating', error);
     });
-  })
-  .catch( (error) => {
-    console.log('error loggin in', error);
-  })
-	//route to main app page
+  });
 }
+
+$("#signInButton").on('click', function() {
+  Authenticate();
+});
+
+function showMainPage() {
+  $('#welcomeScreen').hide();
+  $('#mainScreen').show();
+}
+
+function registerNewUser(username) {
+
+}
+
+
 
 function LoadUserSettings(user){
 	//take the object from firebase with user information load the correct level/progress
