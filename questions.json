@@ -20,14 +20,14 @@
         {
             "points": 25,
             "instruction": "Increase the default font-size!",
-            "options": ["font-size : 2em;", "background-color : blue;", "<html></html>", "font-size : .7em;"],
+            "options": ["font-size : 2em;", "background-color : blue;", "&lt;html&gt;&lt;/html&gt;", "font-size : .7em;"],
             "goal" : "font-size: 2em",
             "type" : 2
         },
         {
             "points": 25,
             "instruction": "Create a body tag!",
-            "options": ["<body></body>", "<p></p>", "<ul></ul>", "<html></html>"],
+            "options": ["&lt;body&gt;&lt;/body&gt;", "&lt;p&gt;&lt;/p&gt;", "&lt;ul&gt;&lt;/ul&gt;", "&lt;html&gt;&lt;/html&gt;"],
             "goal" : "purple",
             "type" : 2
 
