@@ -1,18 +1,21 @@
 'use strict';
+console.log("writing to screen");
 
-var config = {
-    apiKey: FbCreds.apiKey,
-    authDomain: FbCreds.authDomain
-  };
 
-firebase.initializeApp(config);
-var provider = new firebase.auth.GoogleAuthProvider();
+// var config = {
+//     apiKey: FbCreds.apiKey,
+//     authDomain: FbCreds.authDomain
+//   };
+
+// firebase.initializeApp(config);
+// var provider = new firebase.auth.GoogleAuthProvider();
+
 
 // console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
-	//check firebase for credentials 
+	//check firebase for credentials
 	//if user exists - bring back progress, scores, etc.
 	//if not user - create new user
 	//route to main app page
@@ -24,9 +27,29 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
-	//conect to the json file and grab the questions for the level 
 
+
+	return new Promise ( (resolve, reject) => {
+        $.getJSON("questions.json", function(json) {
+            if (json){
+                resolve(json)
+            }else{
+                reject(false)
+            }
+	    });
+
+		$.getJSON("questions.json", function(json) {
+		    console.log(json); 
+		    $("#instructions").html(json.one[0].instruction);
+
+		    $("#option1").html(json.one[0].options[0]);
+		    $("#option2").html(json.one[0].options[1]);
+		    $("#option3").html(json.one[0].options[2]);
+		    $("#option4").html(json.one[0].options[3]);
+		});
+	})
 }
+NextQuestion();
 
 function RandomizeQuestionOrder(){
 	//take the question and randomize the order of the options
@@ -54,7 +77,14 @@ function LevelTabs(leve){
 }
 
 function NextQuestion(){
-	//render the next question
+	GetQuestions(1).then(function (json) {
+		$("#instructions").html(json.one[0].instruction);
+
+	    $("#option1").html(json.one[0].options[0]);
+	    $("#option2").html(json.one[0].options[1]);
+	    $("#option3").html(json.one[0].options[2]);
+	    $("#option4").html(json.one[0].options[3]);
+	})
 }
 
 function LevelUp() {
@@ -68,4 +98,12 @@ function SaveProgress(){
 function logout(){
 	//log user out and show credits page
 }
+
+// event handler for <Done For Now> button
+// $("#doneBtn").click(() => {
+// 	console.log("in click");
+// 	$("#mainScreen").hide();
+// 	$("#endScreen").removeAttr("hidden");
+// });
+
 

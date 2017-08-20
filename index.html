@@ -12,12 +12,45 @@
 </head>
 
 <body>
-  <div class="container">
 
-    <nav class="navbar navbar-light bg-faded">
-      <h1 class="navbar-brand mb-0">navbar brand</h1>
-    </nav>
+  <nav class="navbar navbar-light bg-faded">
+    <h1 class="navbar-brand mb-0">cod&eacute;mon</h1>
+  </nav>
 
+
+  <!-- WELCOME SCREEN -->
+  <div id="welcomeScreen" container="container welcomePage" hidden>
+
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+
+        <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+
+        <form class="form-signin">
+          <h2 class="form-signin-heading">please sign in</h2>
+          <!-- <label for="input Email" class="sr-only">Email address</label> -->
+          <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+
+          <input type="text" class="form-control" id="userName" placeholder="user name" required autofocus>
+          <label for="password" class="sr-only" placeholder="Password"></label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="password" required>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me">
+                remember me
+            </label>
+          </div>
+            <button type="button" id="loginBtn" class="btn btn-primary btn-lg btn-block" type="submit">login</button>
+        </form>
+
+      </div>
+    </div>
+  </div> <!-- .container -->
+
+
+  <!-- MAIN SCREEN -->
+  <div id="mainScreen" class="container">
     <!-- <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1> -->
 
     <!-- Level Buttons across top + Total Points -->
@@ -94,7 +127,7 @@
         <div class="card instructions">
           <div class="card-block">
             <h4 class="card-title">instructions</h4>
-            <p class="card-text">Instructions to user go here</p>
+            <p id="instructions" class="card-text">Instructions to user go here</p>
           </div>
         </div>
       </div>
@@ -109,7 +142,7 @@
           </div>
           <div class="card-block">
             <!-- <h4 class="card-title">Special title treatment</h4> -->
-            <p class="card-text">... text for Option 1 ...</p>
+            <p id="option1" class="card-text">... text for Option 1 ...</p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
@@ -121,7 +154,7 @@
           </div>
           <div class="card-block">
             <!-- <h4 class="card-title">Special title treatment</h4> -->
-            <p class="card-text">... text for Option 2 ...</p>
+            <p id="option2" class="card-text">... text for Option 2 ...</p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
@@ -133,7 +166,7 @@
           </div>
           <div class="card-block">
             <!-- <h4 class="card-title">Special title treatment</h4> -->
-            <p class="card-text">... text for Option 3 ...</p>
+            <p id="option3" class="card-text">... text for Option 3 ...</p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
@@ -145,7 +178,7 @@
           </div>
           <div class="card-block">
             <!-- <h4 class="card-title">Special title treatment</h4> -->
-            <p class="card-text">... text for Option 4 ...</p>
+            <p id="option4" class="card-text">... text for Option 4 ...</p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
           </div>
         </div>
@@ -155,13 +188,44 @@
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-4">
-        <button type="button" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
+        <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
     <div> <!-- .row -->
 
 
-    
+    <!-- END SCREEN -->
+    <div id="endScreen" class="container endPage" hidden>
+
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+
+        <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+        
+        <div class="card badge">
+          <div class="card-header">
+            <h3 class="card-title">some kind of badge image here</h3>
+          </div>
+        </div>
+
+        <div class="card endCard">
+            <div class="card-header">
+              <h1 class="congrats">congrats!!!</h1>
+            </div>
+            <div class="card-block">
+              <h2 class="levelUp">level up to {i}</h2>
+            </div>
+        </div>
+
+        <button type="button" id="dismissBtn" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
+
+      </div>
+    </div> <!-- .row -->
   
+
+
+
+
   </div> <!-- .container -->
 
   <!-- Third Party Scripts -->
@@ -173,6 +237,7 @@
 
   <!-- team scripts -->
   <script type="text/javascript" src="./fb-credits.js"></script>
+  <script type="text/javascript" src="./firebase.js"></script>
   <script type="text/javascript" src="main.js"></script>
 
 </body>
