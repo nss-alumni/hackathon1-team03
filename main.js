@@ -1,5 +1,5 @@
 'use strict';
-console.log("writing to screen");
+// console.log("writing to screen");
 
 
 // var config = {
@@ -52,7 +52,7 @@ function GetQuestions(level){
 	return new Promise ( (resolve, reject) => {
         $.getJSON("questions.json", function(json) {
             if (json){
-            	console.log("JSON: ", json);
+            	// console.log("JSON: ", json);
                 resolve(json[level])
             }else{
                 reject(false)
@@ -78,7 +78,7 @@ $('.optionCard').click(function(event) {
 function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
-	$('#current').html(toCurrent.innerHTML)
+	$('#current').attr("style", toCurrent.innerHTML);
 }
 
 function CheckAnswer(){
@@ -92,13 +92,13 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
-function LevelTabs(leve){
+function LevelTabs(level){
 	//load and render the level that was clicked
 }
 
 function NextQuestion(){
 	GetQuestions('one').then(function (levevl_questions) {
-		console.log("JSON2: ", levevl_questions);
+		// console.log("JSON2: ", level_questions);
 		// Set new instructions
 		$("#instructions").html(levevl_questions.instruction);
 		// Set the 4 options
@@ -114,6 +114,15 @@ function NextQuestion(){
 	})
 }
 
+//GET GOAL BOX VALUE
+function getGoal(){
+	GetQuestions('one').then(function (levevl_questions) {
+		console.log("JSON2: ", levevl_questions);
+		$('#goal').css("background-color", levevl_questions[0].goal);
+	})
+}
+getGoal();
+
 function LevelUp() {
 	//opens model with badge and congratse
 	SaveProgress();
@@ -122,6 +131,7 @@ function SaveProgress(){
 	//save the progress to firebase
 }
 
+
 function logout(){
 	//log user out and show credits page
 	$("#mainScreen").hide();
@@ -129,3 +139,4 @@ function logout(){
 }
 
 $("#doneBtn").on('click',logout);
+
