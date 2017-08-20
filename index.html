@@ -18,6 +18,7 @@
     </nav>
 
 
+
   <!-- WELCOME SCREEN -->
   <div id="welcomeScreen" container="container welcomePage" hidden>
 
@@ -42,6 +43,7 @@
             </label>
           </div>
             <button type="button" class="btn btn-primary btn-lg btn-block" type="submit">login</button>
+
         </form>
 
       </div>
@@ -188,9 +190,40 @@
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-4">
-        <button type="button" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
+        <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
     <div> <!-- .row -->
+
+
+    <!-- END SCREEN -->
+    <div id="endScreen" class="container endPage" hidden>
+
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+
+        <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
+        
+        <div class="card badge">
+          <div class="card-header">
+            <h3 class="card-title">some kind of badge image here</h3>
+          </div>
+        </div>
+
+        <div class="card endCard">
+            <div class="card-header">
+              <h1 class="congrats">congrats!!!</h1>
+            </div>
+            <div class="card-block">
+              <h2 class="levelUp">level up to {i}</h2>
+            </div>
+        </div>
+
+        <button type="button" id="dismissBtn" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
+
+      </div>
+    </div> <!-- .row -->
+  
 
 
 
