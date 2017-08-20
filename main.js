@@ -5,6 +5,13 @@ var level = 'one';
 
 var selectSound = new Audio('audio/select.wav');
 var back = new Audio('audio/back.wav');
+var pika = new Audio('audio/pikachu.wav');
+var wrongAudio = new Audio('audio/wrong.wav');
+
+$('#saveProgressButton').click(function(){
+	back.play();
+})
+
 
 let userInfo = null;
 
@@ -45,6 +52,7 @@ function Authenticate(){
 
 $("#signInButton").on('click', function() {
   Authenticate();
+  pika.play();
 });
 
 function showMainPage() {

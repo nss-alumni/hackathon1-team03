@@ -1,11 +1,11 @@
 body {
 	background-color: #ffe639;
 	background-image: url("images/Grass.jpg");
-	font-family: 'Pontano Sans', sans-serif;
+	font-family: 'Indie Flower', cursive;
 }
 
 .coolKidsHeaderCentered, .welcomePage, .navbar-brand, .plsSignIn, .endPage, h4, h5, h6, .doneButton {
-	font-family: 'Patrick Hand SC', cursive;
+	font-family: 'Acme', sans-serif
 }
 
 .coolKidsHeaderCentered {
@@ -14,22 +14,50 @@ body {
 
 .card {
 	border-radius: 15px;
-	background-color: rgb(235, 126, 120) !important;
 }
 
 .card-block{
-	background-color: white !important;
+	font-family: 'Indie Flower', cursive;
 }
 
 .card-header{
-	background-color: rgb(235, 126, 120) !important;
+	background-color: #c52018; !important;
+}
+
+#topBar{
+	background-color: #832900;
+}
+
+#instructionsCss{
+	background-color: #622900;
+	color: white;
+}
+
+#progressBarCss{
+	background-color: #ffd56a;
+}
+
+.card-header{
+	background-color: #62bdf6 !important;
+}
+#sideBarCss{
+	background-color: #73a4a4;
+}
+
+.overallPoints{
+	background-color: #560765;
+	color: white;
+	text-overflow: clip;
 }
 
 /******************************************/
 /* NAVBAR
 /******************************************/
 .navbar{
-	background-color: #ffe639;
+	background-image: url(images/sky.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 

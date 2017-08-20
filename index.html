@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Hackathan | Codémon</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Pontano+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Gloria+Hallelujah|Indie+Flower|Merriweather" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/tether/dist/css/tether.css">
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -37,6 +37,7 @@
             <div id="signInButton" class="btn btn-primary">
               <img src="./images/googleButton.png">
             </div>
+            <img src="images/oak.jpg" class="oak">
         </form>
 
       </div>
@@ -58,7 +59,7 @@
     <div class="row">
       <div class="col-sm-10">
         <div class="card">
-          <div class="card-block">
+          <div class="card-block" id="topBar">
             <div class="btn-group">
               <button id="level1Btn" type="button" class="btn-primary btn-xs levelButton">Level 1</button>
               <button id="level2Btn" type="button" class="btn-primary btn-xs levelButton">Level 2</button>
@@ -82,7 +83,7 @@
     <div class="row">
       <div class="col-sm-10">
         <div class="card progressBar">
-          <div class="card-block">
+          <div class="card-block" id="progressBarCss">
             <h5 class="card-title">Progress Bar</h5>
           </div>
         </div>
@@ -93,7 +94,7 @@
     <div class="row">
       <div class="col-sm-2">
         <div id="levelStat" class="card workSpaceCard levelStatusBar">
-          <div class="card-block">\
+          <div class="card-block" id="sideBarCss">\
             <h6 class="card-title" id="levelPoints">Level Status</h6>
             <p>0</p>
             <h6 class="card-title">Q Points</h6>
@@ -123,7 +124,7 @@
     <div class="row">
       <div class="col-sm-10">
         <div class="card instructions">
-          <div class="card-block">
+          <div class="card-block" id="instructionsCss">
             <h4 class="card-title">instructions</h4>
             <p id="instructions" class="card-text">Instructions to user go here</p>
           </div>
