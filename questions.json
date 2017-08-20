@@ -4,14 +4,14 @@
             "points": 25,
             "instruction": "Match the color!",
             "options": ["background-color : red;", "background-color : blue;", "background-color : green;", "background-color : orange;"],
-            "goal" : "red",
+            "goal" : "background-color : red;",
             "type" : 1
         },
         {
             "points": 25,
             "instruction": "Match the color!",
             "options": ["background-color : yellow;", "background-color : purple;", "background-color : white;", "background-color : black;"],
-            "goal" : "purple",
+            "goal" : "background-color : purple;",
             "type" : 1
         }
     ],

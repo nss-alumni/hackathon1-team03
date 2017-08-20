@@ -10,7 +10,7 @@
 // firebase.initializeApp(config);
 // var provider = new firebase.auth.GoogleAuthProvider();
 
-
+var current_goal;
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -70,6 +70,11 @@ function RandomizeQuestionOrder(){
 
 //Add event listener to card
 $('.optionCard').click(function(event) {
+    console.log("GOAL: ", current_goal);
+    console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
+    if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
+        console.log("CORRECT!!!!!!!!!!");
+    }
 	DisplayAnswer(event);
 	CheckAnswer();
 });
@@ -78,14 +83,15 @@ function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
 	GetQuestions('one').then(function (level_questions) {
-	switch(level_questions[0].type) {
-    case 1 : $('#current').attr("style", toCurrent.innerHTML);
-        break;
-    case 2 : $('#current').append(toCurrent.innerHTML);
-        break;
-    default:
-        alert('ERROR');
-    }
+        current_goal = level_questions[0].goal
+    	switch(level_questions[0].type) {
+        case 1 : $('#current').attr("style", toCurrent.innerHTML);
+            break;
+        case 2 : $('#current').append(toCurrent.innerHTML);
+            break;
+        default:
+            alert('ERROR');
+        }
 	})
 }
 var wrong = 5;
@@ -125,15 +131,6 @@ function LevelTabs(level){
 
 function NextQuestion(){
 	GetQuestions('one').then(function (level_questions) {
-		// console.log("JSON2: ", level_questions);
-		// Set new instructions
-		$("#instructions").html(level_questions.instruction);
-		// Set the 4 options
-		// Need to randomize the 0 index so we are randomizing questions
-	    $("#option1").html(level_questions[0].options[0]);
-	    $("#option2").html(level_questions[0].options[1]);
-	    $("#option3").html(level_questions[0].options[2]);
-	    $("#option4").html(level_questions[0].options[3]);
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -148,6 +145,12 @@ function NextQuestion(){
 		// Set new instructions
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
 		// Set the 4 options
+
+
+        current_goal = level_questions[rand_question_index-1].goal;
+
+        console.log("CurrentGoal: ", current_goal);
+
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
 	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
 	    $("#option3").html(level_questions[rand_question_index-1].options[random_options[2]]);
@@ -188,3 +191,8 @@ function logout(){
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
+
+
+function isCorrect(){
+
+}
