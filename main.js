@@ -1,18 +1,6 @@
 'use strict';
 console.log("writing to screen");
 
-<<<<<<< HEAD
-// var config = {
-//     apiKey: FbCreds.apiKey,
-//     authDomain: FbCreds.authDomain
-//   };
-
-// firebase.initializeApp(config);
-// var provider = new firebase.auth.GoogleAuthProvider();
-
-=======
->>>>>>> efe7d687c381c4697237e01498b7b4f3acc6b2a1
-// console.log('hi');
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -28,10 +16,8 @@ function LoadUserSettings(user){
 
 /*main page functions*/
 function GetQuestions(level){
-<<<<<<< HEAD
-	//conect to the json file and grab the questions for the level 
 	$.getJSON("questions.json", function(json) {
-	    console.log(json); 
+	    // console.log(json); 
 	    $("#instructions").html(json.one[0].instruction);
 
 	    $("#option1").html(json.one[0].options[0]);
@@ -39,10 +25,6 @@ function GetQuestions(level){
 	    $("#option3").html(json.one[0].options[2]);
 	    $("#option4").html(json.one[0].options[3]);
 	});
-=======
-	//conect to the json file and grab the questions for the level
-
->>>>>>> efe7d687c381c4697237e01498b7b4f3acc6b2a1
 }
 GetQuestions(1);
 
@@ -52,8 +34,15 @@ function RandomizeQuestionOrder(){
 	//render the options on the cards
 }
 
-function DisplayAnswer(){
-	//take the option that was clicked on display it on the current box
+
+//Add event listener to card
+$('.optionCard').click(function(event) {
+	DisplayAnswer(event);
+});
+function DisplayAnswer(event){
+	var toCurrent = $("p", event.target)[0];
+	console.log("toCurrent", toCurrent.innerHTML);
+	$('#current').html(toCurrent.innerHTML)
 }
 
 function CheckAnswer(){
