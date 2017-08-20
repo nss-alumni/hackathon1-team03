@@ -1,0 +1,130 @@
+body {
+	background-color: #F0F2BD;
+	font-family: 'Pontano Sans', sans-serif;
+}
+
+.coolKidsHeaderCentered, .welcomePage, .endPage, h4, h5, h6, .doneButton {
+	font-family: 'Patrick Hand SC', cursive;
+}
+
+.coolKidsHeaderCentered {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.card {
+	border-radius: 15px;
+}
+
+
+
+/******************************************/
+/* styles for Welcome Page
+/******************************************/
+
+input {
+	margin-top: 10px;
+}
+
+
+
+/******************************************/
+/* styles for Main Page
+/******************************************/
+
+.levelButton {
+	margin: 10px 5px 10px 125px;
+}
+
+.overallPoints {
+	text-align: center;
+}
+
+.overallPoints h4 {
+	margin-bottom: 0;
+}
+
+.progressBar {
+	margin: 10px;
+}
+
+.progressBar h5 {
+	margin: 10px 10px;
+}
+
+.workSpaceCard {
+    min-height: 200px;
+}
+
+.workSpaceCard h4, p {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.levelStatusBar {
+	max-width: 75px;
+	margin-left: 50px;
+}
+
+.levelStatusBar h6 {
+	text-align: center;
+}
+
+.instructions {
+	margin: 10px;
+}
+
+.instructions h4 {
+	margin: 5px 10px 0 10px;
+}
+
+.instructions p {
+	margin-top: 0;
+	margin-left: 10px;
+}
+
+.optionCards .card {
+	margin-top: 30px;
+    min-height: 200px;
+}
+
+.optionCards .card-header {
+	background-color: #BDF2DA;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+.doneButton {
+	margin-top: 40px;
+}
+
+
+
+/******************************************/
+/* styles for End Page
+/******************************************/
+
+.endCard h1, h2 {
+	text-align: center;
+}
+
+.endCard {
+	margin-top: 25px;
+}
+
+.endCard .card-header {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background-color: #BDF2DA;
+}
+
+.dismissButton {
+	margin-top: 25px;
+}
+
+.credits {
+	margin-top: 50px;
+	text-align: center;
+}
+
+
