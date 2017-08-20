@@ -1,5 +1,5 @@
 {
-    "one":[
+    "1":[
         {
             "points": 25,
             "instruction": "Match the color!",
@@ -15,7 +15,7 @@
             "type" : 1
         }
     ],
-    "two": [
+    "2": [
         {
             "points": 25,
             "instruction": "Increase the default font-size!",
