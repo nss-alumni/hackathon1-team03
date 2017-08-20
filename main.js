@@ -1,17 +1,21 @@
 'use strict';
 // console.log("writing to screen");
 
-
-var current_goal;
 var level = '1';
+var current_goal;
+
+var selectSound = new Audio('audio/select.wav');
+var back = new Audio('audio/back.wav');
+var pika = new Audio('audio/pikachu.wav');
+var wrongAudio = new Audio('audio/wrong.wav');
+
+$('#saveProgressButton').click(function(){
+	back.play();
+})
+
 
 let userInfo = null;
-// example of userInfo:
-// { uid: 98q3uptoiahsdg
-//   username: userentry
-//   points: [125, 100, 15, etc...]
-//   }
-// var line = new ProgressBar.Line('#levelStat');
+
 
 /*Welcome page functions*/
 function Authenticate(){
@@ -49,6 +53,7 @@ function Authenticate(){
 
 $("#signInButton").on('click', function() {
   Authenticate();
+  pika.play();
 });
 
 function showMainPage() {
@@ -96,6 +101,7 @@ function RandomizeQuestionOrder(){
 //Add event listener to card
 
 
+
 function isCorrect(event){
     console.log("Event: ", event);
 }
@@ -109,7 +115,6 @@ $('.optionCard').click(function(event) {
     }
     DisplayAnswer(event);
     CheckAnswer(is_correct);
-
 });
 
 
@@ -293,6 +298,7 @@ function logout(){
 	//log user out and show credits page
 	$("#mainScreen").hide();
 	$("#endScreen").show();
+	back.play();
 }
 
 // Click event listener for 'DONE' button at bottom of page

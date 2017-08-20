@@ -1,10 +1,15 @@
 body {
-	background-color: #F0F2BD;
-	font-family: 'Pontano Sans', sans-serif;
+	background-color: #ffe639;
+	background-image: url("images/Grass.jpg");
+	font-family: 'Indie Flower', cursive;
+}
+
+.row{
+	justify-content: center;
 }
 
 .coolKidsHeaderCentered, .welcomePage, .navbar-brand, .plsSignIn, .endPage, h4, h5, h6, .doneButton {
-	font-family: 'Patrick Hand SC', cursive;
+	font-family: 'Acme', sans-serif
 }
 
 .coolKidsHeaderCentered {
@@ -15,6 +20,68 @@ body {
 	border-radius: 15px;
 }
 
+.card-block{
+	font-family: 'Indie Flower', cursive;
+	display: flex;
+	flex-grow: initial;
+}
+
+.card-header{
+	background-color: #c52018; !important;
+}
+
+#topBar{
+	background-color: #832900;
+}
+
+#instructionsCss{
+	background-color: #622900;
+	color: white;
+}
+
+#progressBarCss{
+	background-color: #ffd56a;
+}
+
+.card-header{
+	background-color: #62bdf6 !important;
+}
+#sideBarCss{
+	background-color: #73a4a4;
+}
+
+.overallPoints{
+	background-color: #560765;
+	color: white;
+}
+
+.levelStatusBar{
+	display: inline-block;
+	background-color: #560765;
+}
+
+.coolKidsHeaderCentered {
+	background-color: yellow;
+	box-shadow: 1px 5px 10px 10px;
+	border-radius: 15px;
+}
+
+#qPoints{
+	font-size: 2em;
+}
+
+.levelButton{
+	color:orange;
+}
+/******************************************/
+/* NAVBAR
+/******************************************/
+.navbar{
+	background-image: url(images/sky.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 
 /******************************************/
