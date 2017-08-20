@@ -41,37 +41,8 @@
 
       </div>
     </div>
-  </div> <!-- .container -->
+  </div> <!-- WELCOME SCREEN -->
 
-    <!-- END SCREEN -->
-
-  <div id="endScreen" class="container endPage" style="display: none">
-      <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-
-          <h1 class="coolKidsHeaderCentered">Cool Kids Code</h1>
-
-          <div class="card badge">
-            <div class="card-header">
-              <h3 class="card-title">some kind of badge image here</h3>
-            </div>
-          </div>
-
-          <div class="card endCard">
-              <div class="card-header">
-                <h1 class="congrats">congrats!!!</h1>
-              </div>
-              <div class="card-block">
-                <h2 class="levelUp">level up to {i}</h2>
-              </div>
-          </div>
-
-          <button type="button" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
-
-        </div>
-      </div> <!-- .row -->
-  </div> <!-- .container -->
 
 
   <!-- MAIN SCREEN -->
@@ -121,10 +92,10 @@
     <!-- vertical Progress/Points Bar for current Level + Current space + Goal space -->
     <div class="row">
       <div class="col-sm-2">
-        <div class="card workSpaceCard levelStatusBar">
+        <div id="levelStat" class="card workSpaceCard levelStatusBar">
           <div class="card-block">
             <h6 class="card-title">Level Status</h6>
-            <p class="card-text">visual for progress bar goes here</p>
+            <!-- <p class="card-text">visual for progress bar goes here</p> -->
           </div>
         </div>
       </div>
@@ -216,11 +187,13 @@
         <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
     </div> <!-- .row -->
-  </div>
+  </div>  <!-- MAIN SCREEN -->
+
+  </div> <!-- .container -->
 
 
     <!-- END SCREEN -->
-    <div id="endScreen" class="container endPage" hidden>
+    <div id="endScreen" class="container endPage" style="display: none">
 
     <div class="row">
       <div class="col-sm-4"></div>
@@ -230,60 +203,51 @@
 
         <div class="card badge">
           <div class="card-header">
-            <h3 class="card-title">some kind of badge image here</h3>
+            <h3 class="card-title"><image src="images/pikachu.jpg" class="pikachuHeader"></image></h3>
           </div>
         </div>
 
         <div class="card endCard">
             <div class="card-header">
-              <h1 class="congrats">congrats!!!</h1>
+              <h1 class="congrats">thanks for playing!!!</h1>
             </div>
-            <div class="card-block">
+            <!-- <div class="card-block">
               <h2 class="levelUp">level up to {i}</h2>
-            </div>
+            </div> -->
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
-
+        <button type="button" id="saveProgressButton" class="btn btn-primary btn-lg btn-block">see ya later!</button>
       </div>
     </div> <!-- .row -->
-  </div>
-
-
-  </div> <!-- .container -->
-
-
-  <!-- END SCREEN -->
-    <div id="endScreen" class="container endPage" hidden>
 
     <div class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-4">
-
-        <h1 class="coolKidsHeaderCentered">Codémon</h1>
-
-        <div class="card badge">
-          <div class="card-header">
-            <h3 class="card-title">some kind of badge image here</h3>
-          </div>
-        </div>
-
-        <div class="card endCard">
-            <div class="card-header">
-              <h1 class="congrats">congrats!!!</h1>
-            </div>
-            <div class="card-block">
-              <h2 class="levelUp">level up to {i}</h2>
-            </div>
-        </div>
-
-        <button type="button" class="btn btn-primary btn-lg btn-block dismissButton">dismiss</button>
-
+      <div class="col-sm-12">
+        <p class = credits>&mdash; lynn samuelson &mdash; jon roberts &mdash; will sims &mdash; daniel greene &mdash; sharon smith &mdash;</p>
       </div>
     </div> <!-- .row -->
+  </div> <!-- END SCREEN -->
 
 
-  </div> <!-- .container -->
+  <!-- MODAL -->
+  <div id="levelUpModal" class="modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><image src="images/pikachu.jpg" class="pikachuHeader"></image>Congratulations Codémon!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You've Leveled Up!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">go!</button>
+          <button type="button" class="btn btn-primary goodbyeButton" data-dismiss="modal" onclick="logout()">done for now!</button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- MODAL -->
 
 
   <!-- Third Party Scripts -->
@@ -294,7 +258,7 @@
   <script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
 
   <!-- team scripts -->
-  <script type="text/javascript" src="./fb-credits.js"></script>
+  <script type="text/javascript" src="fb-credits.js"></script>
   <script type="text/javascript" src="./firebase.js"></script>
   <script type="text/javascript" src="main.js"></script>
 

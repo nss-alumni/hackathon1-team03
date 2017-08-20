@@ -186,8 +186,11 @@ function getGoal(){
 getGoal();
 
 
-function LevelUp() {
-	//opens model with badge and congrats
+// $("#levelStat").on('click',logout);
+$('#levelUpModal').modal('show');
+//opens model with badge and congrats
+function LevelUp(level) {
+	level++;
 	SaveProgress();
 }
 
