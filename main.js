@@ -1,7 +1,7 @@
 'use strict';
 // console.log("writing to screen");
 
-var level = 'one';
+var level = '1';
 let userInfo = null;
 // example of userInfo:
 // { uid: 98q3uptoiahsdg
@@ -101,7 +101,7 @@ $('.optionCards').on("click", ".optionCard", function() {
 function DisplayAnswer(event){
 	var toCurrent = $("p", event.target)[0];
 	console.log("toCurrent", toCurrent.innerHTML);
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions('1').then(function (level_questions) {
 	switch(level_questions[0].type) {
     case 1 : $('#current').attr("style", toCurrent.innerHTML);
         break;
@@ -119,6 +119,12 @@ totalPoint = parseInt(totalPoint);
 	if (CheckAnswer == 0){
 		ProgressBar += totalPoint;
 		ProgressBar();
+    //add totalPoint to current level points
+    let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
+    console.log('currentLevelPoints', currentLevelPoints);
+    userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
+    console.log('userInfo.points', userInfo.points);
+    updateTotalPoints();
 		$('#qPoints').html('<p>25</p>');
 	}else{
 		totalPoint = totalPoint - 5;
@@ -137,6 +143,7 @@ var ProgressBar = 0;
 function ProgressBar() {
 	if (ProgressBar > 99){
 		LevelUp();
+    //send to firebase
 	}else{
 		GetQuestions();
 	}
@@ -149,6 +156,7 @@ function updateTotalPoints() {
     return a + b;
   });
   $('#totalPoints').text(pointTotal);
+  updateUserInfo({points: userInfo.points});
 }
 
 
@@ -156,30 +164,30 @@ function updateTotalPoints() {
 //load and render the level that is clicked
 $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
-	level = 'one';
-	GetQuestions('one').then(function (level_questions) {
+	level = '1';
+	GetQuestions('1').then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
 
 $("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
-	level = 'two';
-	GetQuestions('two').then(function (level_questions) {
+	level = '2';
+	GetQuestions('2').then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
 
 $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
-	level = 'three';
-	GetQuestions('three');
+	level = '3';
+	GetQuestions('3');
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
-	level = 'four';
-	GetQuestions('four');
+	level = '4';
+	GetQuestions('4');
 });
 
 
@@ -214,7 +222,7 @@ function randOrd(){
 
 //GET GOAL BOX VALUE
 function getGoal(){
-	GetQuestions('one').then(function (level_questions) {
+	GetQuestions('1').then(function (level_questions) {
 		console.log("JSON2: ", level_questions);
 		$('#goal').attr("style", level_questions.goal);
 	})
