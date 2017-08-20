@@ -91,27 +91,42 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
+
+
+function isCorrect(event){
+    console.log("Event: ", event);
+}
+
 $('.optionCard').click(function(event) {
     console.log("GOAL: ", current_goal);
     console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
-	$(this).removeClass('optionCard');
-	$(this).addClass('wronganswer');
+    $(this).removeClass('optionCard');
+    $(this).addClass('wronganswer');
+    console.log("!!!!!");
+    var is_correct = 0;
     if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
         console.log("CORRECT!!!!!!!!!!");
+        is_correct =  1;
     }
+    // is_correct = 0;
+    console.log("IS_CORRECT: ", is_correct);
     DisplayAnswer(event);
-    CheckAnswer();
+    CheckAnswer(is_correct);
 
 });
 
+
 function DisplayAnswer(event){
     var toCurrent = $("p", event.target)[0];
-    console.log("toCurrent", toCurrent.innerHTML);
-    GetQuestions('one').then(function (level_questions) {
+
+    var current_level = parseInt($("#hidden_current_level").html());
+    current_level = 'one'; // THis needs to change
+    // console.log("toCurrent", toCurrent.innerHTML);
+    GetQuestions(current_level).then(function (level_questions) {
         // current_goal = level_questions[0].goal
-        console.log("CURRENT GOAL: ", current_goal);
-        // $('#goal').attr("style", current_goal);
-    	switch(level_questions[0].type) {
+        var current_level = parseInt($("#hidden_current_level").html());
+        console.log("CURRENT LEVEL: ", current_level);
+    	switch(level_questions[current_level].type) {
         case 1 : $('#current').attr("style", toCurrent.innerHTML);
             break;
         case 2 : $('#current').append(toCurrent.innerHTML);
@@ -121,12 +136,28 @@ function DisplayAnswer(event){
         }
 	})
 }
-function CheckAnswer(){
-var totalPoint = $('#qPoints').html();
-totalPoint = parseInt(totalPoint);
-	var CheckAnswer = 1;
-	if (CheckAnswer == 0){
-		ProgressBar += totalPoint;
+
+function showNewQuestion(current_level){
+    GetQuestions(current_level).then(function (level_questions) {
+        console.log("CURRENT LEVEL: ", current_level);
+        switch(level_questions[current_level].type) {
+        case 1 : $('#current').attr("style", toCurrent.innerHTML);
+            break;
+        case 2 : $('#current').append(toCurrent.innerHTML);
+            break;
+        default:
+            alert('ERROR');
+        }
+    });
+}
+
+function CheckAnswer(is_correct){
+    console.log("IS CORRECT: ", is_correct);
+    var totalPoint = $('#qPoints').html();
+    totalPoint = parseInt(totalPoint);
+	var CheckAnswer = is_correct;
+	if (CheckAnswer == 1){
+		progressBar += totalPoint;
 		ProgressBar();
 		$('#qPoints').html('<p>25</p>');
 	}else{
@@ -135,20 +166,26 @@ totalPoint = parseInt(totalPoint);
 		console.log('totalPoint', totalPoint)
 		console.log("event.target", $("p", event.target))
 	}
-		return totalPoint;
+	return totalPoint;
 	//onclick of a card this function checks if the answer is correct
 	//totalPoint starts at 25
 	//if correct - then add  points to total and move to next question
 	//if not correct - then subtract 5 points from the question score and mark the answer as unavailable
 }
 
-var ProgressBar = 0;
+var progressBar = 0;
 function ProgressBar() {
-	if (ProgressBar > 99){
+    // var total_points = getTotalPoints()
+    var total_points = 78;
+	if (total_points > 99){
 		$('#levelUpModal').modal('show');
 		
 	}else{
-		GetQuestions();
+        var current_level = parseInt($("#hidden_current_level").html());
+		GetQuestions(current_level).then( function(response){
+            current_level = 'two';
+            showNewQuestion(current_level);
+        });
 	}
 
 	//render the correct progress on the progress bar
@@ -212,6 +249,11 @@ function ShowQuestion(level){
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
 
         current_goal = level_questions[rand_question_index-1].goal;
+
+        $('#goal').attr("style", current_goal);
+
+
+
 
 		// Set the 4 options
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
