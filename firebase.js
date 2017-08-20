@@ -59,7 +59,8 @@ function createUserInfo(username) {
   return new Promise( (resolve, reject) => {
     let userObject = {
       uid: currentUser,
-      name: username
+      name: username,
+      points: [0]
     };
     $.ajax({
       url: `${fbURL}user.json`,
