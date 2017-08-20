@@ -37,15 +37,15 @@ function logoutUser() {
   });
 }
 
-function getUserInfo() {
+function getUserInfo(uid) {
   return new Promise( (resolve, reject) => {
     $.ajax({
-      url: `${fbURL}user.json?orderBy="uid"&equalTo="${currentUser}"`
+      url: `${fbURL}user.json?orderBy="uid"&equalTo="${uid}"`
     }).done( (userData) => {
       console.log('userData', userData);
-      userFBKey = userData.data.name;
+      let userFBKey = Object.keys(userData)[0];
       console.log('userFBKey', userFBKey);
-      resolve(userData.data);
+      resolve(userData);
     }).fail((err)=>{
       console.log('error getting user FB info', err);
       reject(err);

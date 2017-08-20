@@ -2,23 +2,35 @@
     "one":[
         {
             "points": 25,
-            "instruction": "Do something else 1",
-            "options": ["(1)Option 1", "Option 2", "option 3", "Option 4"]
+
+            "instruction": "Match the color!",
+            "options": ["background-color : red;", "background-color : blue;", "background-color : green;", "background-color : orange;"],
+            "goal" : "red",
+            "type" : 1
         },
         {
             "points": 25,
-            "instruction": "Do something else 2",
-            "options": ["(2) Option 1", "(2) Option 2", "(2) option 3", "(2) Option 4"]
+            "instruction": "Match the color!",
+            "options": ["background-color : yellow;", "background-color : purple;", "background-color : white;", "background-color : black;"],
+            "goal" : "purple",
+            "type" : 1
+        }
+    ],
+    "two": [
+        {
+            "points": 25,
+            "instruction": "Increase the default font-size!",
+            "options": ["font-size : 2em;", "background-color : blue;", "<html></html>", "font-size : .7em;"],
+            "goal" : "font-size: 2em",
+            "type" : 2
         },
         {
             "points": 25,
-            "instruction": "Do something else 3",
-            "options": ["(3) Option 1", "Option 2", "option 3", "Option 4"]
-        },
-        {
-            "points": 25,
-            "instruction": "Do something else 4",
-            "options": ["(4) Option 1", "Option 2", "option 3", "Option 4"]
+            "instruction": "Create a body tag!",
+            "options": ["<body></body>", "<p></p>", "<ul></ul>", "<html></html>"],
+            "goal" : "purple",
+            "type" : 2
+
         }
     ]
 }
