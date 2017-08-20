@@ -1,7 +1,10 @@
 'use strict';
 // console.log("writing to screen");
 
+
+var current_goal;
 var level = '1';
+
 let userInfo = null;
 // example of userInfo:
 // { uid: 98q3uptoiahsdg
@@ -91,64 +94,99 @@ function RandomizeQuestionOrder(){
 }
 
 //Add event listener to card
-$('.optionCards').on("click", ".optionCard", function() {
-	console.log('this', this)
-	DisplayAnswer(event);
-	CheckAnswer();
-	$(this).removeClass('optionCard');
-	$(this).addClass('wronganswer')
+
+
+function isCorrect(event){
+    console.log("Event: ", event);
+}
+
+$('.optionCard').click(function(event) {
+    console.log("GOAL: ", current_goal);
+    console.log("HTML: ", event.currentTarget.children[1].children[0].innerHTML);
+    $(this).removeClass('optionCard');
+    $(this).addClass('wronganswer');
+    console.log("!!!!!");
+    var is_correct = 0;
+    if (event.currentTarget.children[1].children[0].innerHTML == current_goal){
+        console.log("CORRECT!!!!!!!!!!");
+        is_correct =  1;
+    }
+    // is_correct = 0;
+    console.log("IS_CORRECT: ", is_correct);
+    DisplayAnswer(event);
+    CheckAnswer(is_correct);
+
 });
 
+
 function DisplayAnswer(event){
-	var toCurrent = $("p", event.target)[0];
-	console.log("toCurrent", toCurrent.innerHTML);
-	GetQuestions('1').then(function (level_questions) {
-	switch(level_questions[0].type) {
-    case 1 : $('#current').attr("style", toCurrent.innerHTML);
-        break;
-    case 2 : $('#current').append(toCurrent.innerHTML);
-        break;
-    default:
-        alert('ERROR');
-    }
+    // var toCurrent = $("p", event.target)[0];
+
+    var toCurrent = $("#current")
+
+    var current_level = $("#hidden_current_level").html();
+    // console.log("toCurrent", toCurrent.innerHTML);
+    GetQuestions(current_level).then(function (level_questions) {
+        console.log("Questions: ", level_questions);
+        current_goal = level_questions[0].goal
+        var current_level = parseInt($("#hidden_current_level").html());
+        console.log("CURRENT LEVEL: ", current_level);
+    	switch(level_questions[current_level].type) {
+        case 1 : $('#current').attr("style", toCurrent.innerHTML);
+            break;
+        case 2 : $('#current').append(toCurrent.innerHTML);
+            break;
+        default:
+            alert('ERROR');
+        }
 	})
 }
-function CheckAnswer(){
-var totalPoint = $('#qPoints').html();
-totalPoint = parseInt(totalPoint);
-	var CheckAnswer = 0;
-	if (CheckAnswer == 0){
-    console.log('check anser if true', totalPoint);
-		ProgressBar += totalPoint;
-		ProgressBar();
+
+
+function CheckAnswer(is_correct){
+    console.log("IS CORRECT: ", is_correct);
+    var totalPoint = $('#qPoints').html();
+    totalPoint = parseInt(totalPoint);
+	var CheckAnswer = is_correct;
+	if (CheckAnswer == 1){
+		progressBar += totalPoint;
+    ProgressBar();
     //add totalPoint to current level points
     let currentLevelPoints = userInfo.points[(parseInt(level) - 1)];
     console.log('currentLevelPoints', currentLevelPoints);
     userInfo.points[(parseInt(level) - 1)] = currentLevelPoints + totalPoint;
     console.log('userInfo.points', userInfo.points);
     updateTotalPoints();
-		$('#qPoints').html('<p>25</p>');
-	}else{
-		totalPoint = totalPoint - 5;
-		$('#qPoints').html(totalPoint);
-		console.log('totalPoint', totalPoint)
-		console.log("event.target", $("p", event.target))
-	}
-		return totalPoint;
-	//onclick of a card this function checks if the answer is correct
-	//totalPoint starts at 25
-	//if correct - then add  points to total and move to next question
-	//if not correct - then subtract 5 points from the question score and mark the answer as unavailable
+    $('#qPoints').html('<p>25</p>');
+  }else{
+    totalPoint = totalPoint - 5;
+    $('#qPoints').html(totalPoint);
+    console.log('totalPoint', totalPoint)
+    console.log("event.target", $("p", event.target))
+  }
+  return totalPoint;
 }
 
-var ProgressBar = 0;
-function ProgressBar(level) {
-	if (ProgressBar > 99){
-		LevelUp();
-    //send to firebase
+
+
+var progressBar = 0;
+function ProgressBar() {
+    // var total_points = getTotalPoints()
+    var total_points = 78;
+	if (total_points > 99){
+
 		$('#levelUpModal').modal('show');
 	}else{
-		GetQuestions(level);
+
+    var current_level = parseInt($("#hidden_current_level").html());
+		GetQuestions(current_level).then( function(response){
+        // current_level += 1;
+        current_level = '2';
+        $(".card").removeClass('wronganswer');
+        $(".card").addClass('optionCard');
+        ShowQuestion(current_level);
+    });
+
 	}
 
 	//render the correct progress on the progress bar
@@ -174,7 +212,7 @@ $("#level1Btn").on('click', () => {
 	console.log("in level button click 1");
 
 	level = '1';
-	GetQuestions('1').then(function (level_questions) {
+	GetQuestions(level).then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
@@ -182,8 +220,7 @@ $("#level1Btn").on('click', () => {
 $("#level2Btn").on('click', () => {
 	console.log("in level button click 2");
 	level = '2';
-
-	GetQuestions('2').then(function (level_questions) {
+	GetQuestions(level).then(function (level_questions) {
 		ShowQuestion(level);
 	})
 });
@@ -191,20 +228,23 @@ $("#level2Btn").on('click', () => {
 $("#level3Btn").on('click', () => {
 	console.log("in level button click 3");
 	level = '3';
+	GetQuestions(level);
 
-	GetQuestions('3');
 });
 
 $("#level4Btn").on('click', () => {
 	console.log("in level button click 4");
 	level = '4';
 
-	GetQuestions('4');
+	GetQuestions(level);
 });
 
 
 function ShowQuestion(level){
+
+  $("#current").attr("style", "");
 	GetQuestions(level).then(function (level_questions) {
+
 		// Get amount of questions to generate a random number
 		var num_questions = level_questions.length;
 
@@ -218,6 +258,14 @@ function ShowQuestion(level){
 
 		// Set new instructions
 		$("#instructions").html(level_questions[rand_question_index-1].instruction);
+
+        current_goal = level_questions[rand_question_index-1].goal;
+
+        $('#goal').attr("style", current_goal);
+
+
+
+
 		// Set the 4 options
 	    $("#option1").html(level_questions[rand_question_index-1].options[random_options[0]]);
 	    $("#option2").html(level_questions[rand_question_index-1].options[random_options[1]]);
@@ -264,3 +312,8 @@ function logout(){
 // Click event listener for 'DONE' button at bottom of page
 $("#doneBtn").on('click',logout);
 
+
+
+function isCorrect(){
+
+}
