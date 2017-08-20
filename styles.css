@@ -4,6 +4,10 @@ body {
 	font-family: 'Indie Flower', cursive;
 }
 
+.row{
+	justify-content: center;
+}
+
 .coolKidsHeaderCentered, .welcomePage, .navbar-brand, .plsSignIn, .endPage, h4, h5, h6, .doneButton {
 	font-family: 'Acme', sans-serif
 }
@@ -18,6 +22,8 @@ body {
 
 .card-block{
 	font-family: 'Indie Flower', cursive;
+	display: flex;
+	flex-grow: initial;
 }
 
 .card-header{
@@ -47,9 +53,22 @@ body {
 .overallPoints{
 	background-color: #560765;
 	color: white;
-	text-overflow: clip;
 }
 
+.levelStatusBar{
+	display: inline-block;
+	background-color: #560765;
+}
+
+.coolKidsHeaderCentered {
+	background-color: yellow;
+	box-shadow: 1px 5px 10px 10px;
+	border-radius: 15px;
+}
+
+#qPoints{
+	font-size: 2em;
+}
 /******************************************/
 /* NAVBAR
 /******************************************/

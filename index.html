@@ -23,7 +23,6 @@
   <div id="welcomeScreen" container="container welcomePage">
 
     <div class="row">
-      <div class="col-sm-4"></div>
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
@@ -52,12 +51,12 @@
 
     <!-- Level Buttons across top + Total Points -->
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-4">
           <h1 class="coolKidsHeaderCentered">Codémon</h1>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-12">
         <div class="card">
           <div class="card-block" id="topBar">
             <div class="btn-group">
@@ -65,39 +64,24 @@
               <button id="level2Btn" type="button" class="btn-primary btn-xs levelButton">Level 2</button>
               <button id="level3Btn" type="button" class="btn-primary btn-xs levelButton">Level 3</button>
               <button id="level4Btn" type="button" class="btn-primary btn-xs levelButton">Level 4</button>
+              <div class="col-sm">
+                <div class="card">
+                  <div class="card-block overallPoints">
+                    <h4 class="card-title">points</h4>
+                    <h4 id="totalPoints">999</h4>
+                  </div>
+                </div>
+              </div>
             </div> <!-- Level Buttons -->
           </div>
         </div>
       </div>
-      <div class="col-sm-1">
-        <div class="card">
-          <div class="card-block overallPoints">
-            <h4 class="card-title">points</h4>
-            <h4 id="totalPoints">999</h4>
-          </div>
-        </div>
-      </div>
     </div> <!-- .row -->
-
-    <!-- horizontal Progress Bar for overall progress -->
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="card progressBar">
-          <div class="card-block" id="progressBarCss">
-            <h5 class="card-title">Progress Bar</h5>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .row -->
-
-    <!-- vertical Progress/Points Bar for current Level + Current space + Goal space -->
     <div class="row">
       <div class="col-sm-2">
-        <div id="levelStat" class="card workSpaceCard levelStatusBar">
-          <div class="card-block" id="sideBarCss">\
-            <h6 class="card-title" id="levelPoints">Level Status</h6>
-            <p>0</p>
-            <h6 class="card-title">Q Points</h6>
+        <div id="levelStat" class="card workSpaceCard levelStatusBar align-items-stretch d-flex">
+          <div class="card-block" id="sideBarCss">
+<!--             <h6 class="card-title" id="levelPoints">Level Status</h6> -->
             <p id="qPoints">25</p>
           </div>
         </div>
@@ -122,7 +106,7 @@
 
     <!-- Instructions to user -->
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-12">
         <div class="card instructions">
           <div class="card-block" id="instructionsCss">
             <h4 class="card-title">instructions</h4>
@@ -185,7 +169,6 @@
     </div> <!-- .row -->
 
     <div class="row">
-      <div class="col-sm-3"></div>
       <div class="col-sm-4">
         <button type="button" id="doneBtn" class="btn btn-primary btn-lg btn-block doneButton">done for now!</button>
       </div>
@@ -199,7 +182,6 @@
     <div id="endScreen" class="container endPage" style="display: none">
 
     <div class="row">
-      <div class="col-sm-4"></div>
       <div class="col-sm-4">
 
         <h1 class="coolKidsHeaderCentered">Codémon</h1>
