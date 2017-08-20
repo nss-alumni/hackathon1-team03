@@ -112,6 +112,13 @@ function ProgressBar() {
 	//render the correct progress on the progress bar
 }
 
+function updateTotalPoints() {
+  let pointTotal = userInfo.points.reduce(function(a,b) {
+    return a + b;
+  });
+  $('#totalPoints').text(pointTotal);
+}
+
 
 //Event Handlers for Level buttons
 //load and render the level that is clicked

@@ -44,8 +44,8 @@ function getUserInfo(uid) {
       url: `${fbURL}user.json?orderBy="uid"&equalTo="${uid}"`
     }).done( (userData) => {
       // console.log('userData', userData);
-      userInfo = userData;
-      let userFBKey = Object.keys(userData)[0];
+      userFBKey = Object.keys(userData)[0];
+      userInfo = userData[userFBKey];
       // console.log('userFBKey', userFBKey);
       resolve(userData);
     }).fail((err)=>{
