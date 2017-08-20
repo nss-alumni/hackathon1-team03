@@ -14,14 +14,37 @@ console.log("writing to screen");
 
 /*Welcome page functions*/
 function Authenticate(){
-	//check firebase for credentials
-	//if user exists - bring back progress, scores, etc.
-	//if not user - create new user
+  loginUser()
+  .then( (data) => {
+  	//check firebase for credentials
+    getUserInfo(data.user.uid)
+    .then( (userData) => {
+      console.log('userData', userData);
+      let FBKey = Object.keys(userData)[0];
+    	//if user exists - bring back progress, scores, etc.
+      if (userData[FBKey]) {
+        console.log('we have a user', userData);
+        //userData should be all relevant info, where are we storing it?
+      } else { //if not user - create new user
+        createUserInfo();
+      }
+    })
+    .catch( (error) => {
+      console.log('error authenticating', error);
+    });
+  })
+  .catch( (error) => {
+    console.log('error loggin in', error);
+  })
 	//route to main app page
 }
 
 function LoadUserSettings(user){
 	//take the object from firebase with user information load the correct level/progress
+  getUserInfo()
+  .then( (userData) => {
+
+  });
 }
 
 /*main page functions*/
