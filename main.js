@@ -16,7 +16,6 @@ function Authenticate(){
   	//check firebase for credentials
     getUserInfo(data.user.uid)
     .then( (userData) => {
-      console.log('userData', userData);
       let FBKey = Object.keys(userData)[0];
     	//if user exists - bring back progress, scores, etc.
       if (userData[FBKey]) {
